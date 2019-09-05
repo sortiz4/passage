@@ -1,11 +1,22 @@
 $body-overflow-x: auto;
 $body-overflow-y: auto;
 $box-shadow: none;
+$input-shadow: none;
 
 @import '~bulma/bulma';
 
+$transition: 250ms ease;
+
 .button {
+    box-sizing: border-box;
     font-weight: 600;
+    transition: $transition;
+}
+
+.input {
+    border-width: 2px;
+    box-sizing: border-box;
+    transition: $transition;
 }
 
 .window {
@@ -18,7 +29,7 @@ $box-shadow: none;
     bottom: 0;
     left: 0;
     right: 0;
-    transition: background 250ms ease;
+    transition: $transition;
 
     &.is-primary {
         background: $primary;
