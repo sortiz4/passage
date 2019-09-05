@@ -1,0 +1,46 @@
+$body-overflow-x: auto;
+$body-overflow-y: auto;
+$box-shadow: none;
+
+@import '~bulma/bulma';
+
+.button {
+    font-weight: 600;
+}
+
+.window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: background 250ms ease;
+
+    &.is-primary {
+        background: $primary;
+    }
+
+    &.is-link {
+        background: $link;
+    }
+
+    &.is-info {
+        background: $info;
+    }
+
+    &.is-success {
+        background: $success;
+    }
+
+    &.is-warning {
+        background: $warning;
+    }
+
+    &.is-danger {
+        background: $danger;
+    }
+}

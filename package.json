@@ -1,0 +1,35 @@
+{
+  "name": "passage",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bulma": "^0.7.5",
+    "core-js": "^3.2.1",
+    "file-saver": "^2.0.2",
+    "lodash": "^4.17.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@neutrinojs/eslint": "^9.0.0-rc.3",
+    "@neutrinojs/react": "^9.0.0-rc.3",
+    "clean-css-loader": "^2.0.0",
+    "eslint": "^5.16.0",
+    "neutrino": "^9.0.0-rc.3",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "build": "webpack --mode=production && node export",
+    "lint": "eslint --format=codeframe --ext=js src",
+    "start": "webpack-dev-server --mode=development"
+  }
+}
