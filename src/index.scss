@@ -108,18 +108,6 @@ $ps-window-width: 600px;
         width: $ps-window-width;
     }
 
-    &.is-primary {
-        background: $primary;
-    }
-
-    &.is-link {
-        background: $link;
-    }
-
-    &.is-info {
-        background: $info;
-    }
-
     &.is-success {
         background: $success;
     }

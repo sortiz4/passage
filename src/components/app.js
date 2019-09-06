@@ -13,7 +13,7 @@ import {
 import {Children, Fragment, React} from 'core/react';
 
 export function App() {
-    const colors = ['link', 'info', 'primary', 'success', 'warning', 'danger'];
+    const colors = ['success', 'warning', 'danger'];
     const [index, setIndex] = React.useState(0);
     const color = colors[index % colors.length];
     return (
