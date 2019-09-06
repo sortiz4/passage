@@ -26,11 +26,21 @@ export function App() {
                 <Mode/>
                 <Field>
                     <Label>Password length</Label>
-                    <Input type="number" min={1} defaultValue={16}/>
+                    <Input
+                        type="number"
+                        min={1}
+                        max={Number.MAX_SAFE_INTEGER}
+                        defaultValue={16}
+                    />
                 </Field>
                 <Field>
                     <Label>Passwords to generate</Label>
-                    <Input type="number" min={1} defaultValue={1}/>
+                    <Input
+                        type="number"
+                        min={1}
+                        max={Number.MAX_SAFE_INTEGER}
+                        defaultValue={1}
+                    />
                 </Field>
                 <Field>
                     <Checkbox>
