@@ -1,5 +1,16 @@
-import {React} from 'core/react';
-import {classNames} from 'core/string';
+import {
+    Box,
+    Button,
+    Checkbox,
+    Control,
+    Field,
+    Input,
+    Label,
+    Radio,
+    Title,
+    Window,
+} from 'components';
+import {Children, Fragment, React} from 'core/react';
 
 export function App() {
     const colors = ['link', 'info', 'primary', 'success', 'warning', 'danger'];
@@ -12,151 +23,112 @@ export function App() {
                     Passage
                 </Title>
                 <hr/>
-                <Control>
-                    <Label>Mode</Label>
-                    <Radio>
-                        Simple
-                    </Radio>
-                    <Radio>
-                        Advanced
-                    </Radio>
-                </Control>
-                <Label>Options</Label>
-                <Checkbox>
-                    Uppercase
-                </Checkbox>
-                <Checkbox>
-                    Lowercase
-                </Checkbox>
-                <Checkbox>
-                    Numbers
-                </Checkbox>
-                <Checkbox>
-                    Symbols
-                </Checkbox>
-                <Field>
-                    <Label>Character set</Label>
-                    <Input type="text"/>
-                </Field>
+                <Mode/>
                 <Field>
                     <Label>Password length</Label>
-                    <Input type="number"/>
+                    <Input type="number" min={1} defaultValue={16}/>
                 </Field>
                 <Field>
-                    <Label>Amount to generate</Label>
-                    <Input type="number"/>
+                    <Label>Passwords to generate</Label>
+                    <Input type="number" min={1} defaultValue={1}/>
                 </Field>
-                <Checkbox>
-                    Save to file
-                </Checkbox>
+                <Field>
+                    <Checkbox>
+                        Save to file
+                    </Checkbox>
+                </Field>
                 <Button
                     color={color}
+                    children="Generate"
                     onClick={() => setIndex(index + 1)}
-                >
-                    Generate
-                </Button>
+                />
             </Box>
         </Window>
     );
 }
 
-function Box(props) {
+export function Mode() {
+    const [mode, setMode] = React.useState(0);
+    const SIMPLE = 0, ADVANCED = 1;
     return (
-        <div
-            className="box"
-            {...props}
-        />
+        <Fragment>
+            <Control>
+                <Label>
+                    Mode
+                </Label>
+                <Row>
+                    <Radio
+                        children="Simple"
+                        checked={mode === SIMPLE}
+                        onClick={() => setMode(SIMPLE)}
+                    />
+                    <Radio
+                        children="Advanced"
+                        checked={mode === ADVANCED}
+                        onClick={() => setMode(ADVANCED)}
+                    />
+                </Row>
+            </Control>
+            {mode === SIMPLE ? (
+                <Simple/>
+            ) : mode === ADVANCED ? (
+                <Advanced/>
+            ) : (
+                null
+            )}
+        </Fragment>
     );
 }
 
-function Button({color, ...props}) {
+export function Simple() {
     return (
-        <button
-            className={
-                classNames(
-                    'button',
-                    typeof color === 'string' ? `is-${color}` : null,
+        <Fragment>
+            <Label>
+                Options
+            </Label>
+            <Row>
+                <Checkbox defaultChecked={true}>
+                    Uppercase
+                </Checkbox>
+                <Checkbox defaultChecked={true}>
+                    Lowercase
+                </Checkbox>
+            </Row>
+            <Row>
+                <Checkbox defaultChecked={true}>
+                    Numbers
+                </Checkbox>
+                <Checkbox defaultChecked={true}>
+                    Symbols
+                </Checkbox>
+            </Row>
+        </Fragment>
+    );
+}
+
+export function Advanced() {
+    return (
+        <Field>
+            <Label>Character set</Label>
+            <Input type="text"/>
+        </Field>
+    );
+}
+
+export function Row({children, ...props}) {
+    return (
+        <div
+            children={
+                Children.map(
+                    children,
+                    child => (
+                        <div>
+                            {child}
+                        </div>
+                    ),
                 )
             }
-            {...props}
-        />
-    );
-}
-
-function Checkbox({children, ...props}) {
-    return (
-        <label className="checkbox">
-            <input type="checkbox"/>
-            {children}
-        </label>
-    );
-}
-
-function Control(props) {
-    return (
-        <div
-            className="control"
-            {...props}
-        />
-    );
-}
-
-function Field(props) {
-    return (
-        <div
-            className="field"
-            {...props}
-        />
-    );
-}
-
-function Input(props) {
-    return (
-        <input
-            className="input"
-            {...props}
-        />
-    );
-}
-
-function Label(props) {
-    return (
-        <label
-            className="label"
-            {...props}
-        />
-    );
-}
-
-function Radio({children, ...props}) {
-    return (
-        <label className="radio">
-            <input type="radio"/>
-            {children}
-        </label>
-    );
-}
-
-function Title({size = 3, children, ...props}) {
-    return React.createElement(
-        `h${size}`,
-        {
-            className: classNames('title', `is-${size}`),
-            ...props,
-        },
-        children,
-    );
-}
-
-function Window({color, ...props}) {
-    return (
-        <div
-            className={
-                classNames(
-                    'window',
-                    typeof color === 'string' ? `is-${color}` : null,
-                )
-            }
+            className="row"
             {...props}
         />
     );
