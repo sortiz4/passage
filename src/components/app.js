@@ -19,7 +19,7 @@ export function App() {
     return (
         <Window color={color}>
             <Box>
-                <Title>
+                <Title centered>
                     Passage
                 </Title>
                 <hr/>

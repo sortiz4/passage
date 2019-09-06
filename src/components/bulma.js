@@ -78,11 +78,15 @@ export function Radio({children, ...props}) {
     );
 }
 
-export function Title({size = 3, children, ...props}) {
+export function Title({size = 3, centered, children, ...props}) {
     return React.createElement(
         `h${size}`,
         {
-            className: classNames('title', `is-${size}`),
+            className: classNames(
+                'title',
+                `is-${size}`,
+                centered && 'has-text-centered',
+            ),
             ...props,
         },
         children,
