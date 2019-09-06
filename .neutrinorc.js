@@ -29,7 +29,7 @@ module.exports = {
             // Compilation targets
             targets: {
                 browsers: [
-                    'Firefox >= 40',
+                    'Chrome >= 70',
                 ],
             },
 

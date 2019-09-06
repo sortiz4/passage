@@ -12,7 +12,43 @@ export function App() {
                     Passage
                 </Title>
                 <hr/>
-                <Input type="number"/>
+                <Control>
+                    <Label>Mode</Label>
+                    <Radio>
+                        Simple
+                    </Radio>
+                    <Radio>
+                        Advanced
+                    </Radio>
+                </Control>
+                <Label>Options</Label>
+                <Checkbox>
+                    Uppercase
+                </Checkbox>
+                <Checkbox>
+                    Lowercase
+                </Checkbox>
+                <Checkbox>
+                    Numbers
+                </Checkbox>
+                <Checkbox>
+                    Symbols
+                </Checkbox>
+                <Field>
+                    <Label>Character set</Label>
+                    <Input type="text"/>
+                </Field>
+                <Field>
+                    <Label>Password length</Label>
+                    <Input type="number"/>
+                </Field>
+                <Field>
+                    <Label>Amount to generate</Label>
+                    <Input type="number"/>
+                </Field>
+                <Checkbox>
+                    Save to file
+                </Checkbox>
                 <Button
                     color={color}
                     onClick={() => setIndex(index + 1)}
@@ -47,12 +83,57 @@ function Button({color, ...props}) {
     );
 }
 
+function Checkbox({children, ...props}) {
+    return (
+        <label className="checkbox">
+            <input type="checkbox"/>
+            {children}
+        </label>
+    );
+}
+
+function Control(props) {
+    return (
+        <div
+            className="control"
+            {...props}
+        />
+    );
+}
+
+function Field(props) {
+    return (
+        <div
+            className="field"
+            {...props}
+        />
+    );
+}
+
 function Input(props) {
     return (
         <input
             className="input"
             {...props}
         />
+    );
+}
+
+function Label(props) {
+    return (
+        <label
+            className="label"
+            {...props}
+        />
+    );
+}
+
+function Radio({children, ...props}) {
+    return (
+        <label className="radio">
+            <input type="radio"/>
+            {children}
+        </label>
     );
 }
 
