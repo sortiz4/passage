@@ -18,36 +18,30 @@ export function Simple() {
     };
     return (
         <Fragment>
-            <Label>
-                Options
-            </Label>
+            <Label>Options</Label>
             <Row>
                 <Checkbox
+                    children="Uppercase"
                     defaultChecked={state.uppercase}
                     onChange={onUppercaseChange}
-                >
-                    Uppercase
-                </Checkbox>
+                />
                 <Checkbox
+                    children="Lowercase"
                     defaultChecked={state.lowercase}
                     onChange={onLowercaseChange}
-                >
-                    Lowercase
-                </Checkbox>
+                />
             </Row>
             <Row>
                 <Checkbox
+                    children="Numbers"
                     defaultChecked={state.numbers}
                     onChange={onNumbersChange}
-                >
-                    Numbers
-                </Checkbox>
+                />
                 <Checkbox
+                    children="Symbols"
                     defaultChecked={state.symbols}
                     onChange={onSymbolsChange}
-                >
-                    Symbols
-                </Checkbox>
+                />
             </Row>
         </Fragment>
     );

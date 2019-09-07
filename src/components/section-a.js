@@ -2,15 +2,13 @@ import {Advanced, Control, Label, Radio, Row, Simple} from 'components';
 import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
 
-export function Mode() {
+export function SectionA() {
     const [state, setState] = React.useContext(State.Context);
     const {SIMPLE, ADVANCED} = state;
     return (
         <Fragment>
             <Control>
-                <Label>
-                    Mode
-                </Label>
+                <Label>Mode</Label>
                 <Row>
                     <Radio
                         children="Simple"

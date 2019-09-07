@@ -8,15 +8,13 @@ const SYMBOL_COUNT = 32;
 const OPTION_CEILING = 94;
 const LENGTH_CEILING = 16;
 
-const DEFAULT_CHARACTER_SET = (
-    (function() {
-        const chars = [];
-        for(let i = 33; i < 127; i++) {
-            chars.push(String.fromCharCode(i));
-        }
-        return chars.join('');
-    })()
-);
+const DEFAULT_CHARACTER_SET = (function() {
+    const chars = [];
+    for(let i = 33; i < 127; i++) {
+        chars.push(String.fromCharCode(i));
+    }
+    return chars.join('');
+})();
 
 const COLORS = ['danger', 'warning', 'success'];
 
@@ -74,6 +72,18 @@ export class State {
         // Compute the weighted sum
         return (options / 2) + (length / 2);
     }
+
+    // get _characters() {
+    //     return Array.from(
+    //         new Set(
+    //             this.isSimple ? (
+    //                 DEFAULT_CHARACTER_SET
+    //             ) : (
+    //                 this.characters
+    //             )
+    //         )
+    //     );
+    // }
 
     generate() {
         const characters = Array.from(
