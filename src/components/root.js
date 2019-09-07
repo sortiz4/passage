@@ -9,14 +9,19 @@ import {
     Title,
     Window,
 } from 'components';
+import {State} from 'core/models';
 import {React} from 'core/react';
 
 export function Root() {
-    const colors = ['success', 'warning', 'danger'];
-    const [index, setIndex] = React.useState(0);
-    const color = colors[index % colors.length];
+    const [state, setState] = React.useContext(State.Context);
+    const onLengthChange = event => {
+        setState({length: Number(event.target.value)});
+    };
+    const onAmountChange = event => {
+        setState({amount: Number(event.target.value)});
+    };
     return (
-        <Window color={color}>
+        <Window color={state.color}>
             <Box>
                 <Title centered>
                     Passage
@@ -27,18 +32,20 @@ export function Root() {
                     <Label>Password length</Label>
                     <Input
                         type="number"
+                        defaultValue={16}
                         min={1}
                         max={Number.MAX_SAFE_INTEGER}
-                        defaultValue={16}
+                        onChange={onLengthChange}
                     />
                 </Field>
                 <Field>
                     <Label>Passwords to generate</Label>
                     <Input
                         type="number"
+                        defaultValue={1}
                         min={1}
                         max={Number.MAX_SAFE_INTEGER}
-                        defaultValue={1}
+                        onChange={onAmountChange}
                     />
                 </Field>
                 <Field>
@@ -47,9 +54,8 @@ export function Root() {
                     </Checkbox>
                 </Field>
                 <Button
-                    color={color}
+                    color={state.color}
                     children="Generate"
-                    onClick={() => setIndex(index + 1)}
                 />
             </Box>
         </Window>

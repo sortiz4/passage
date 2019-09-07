@@ -1,9 +1,10 @@
 import {Advanced, Control, Label, Radio, Row, Simple} from 'components';
+import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
 
 export function Mode() {
-    const [mode, setMode] = React.useState(0);
-    const SIMPLE = 0, ADVANCED = 1;
+    const [state, setState] = React.useContext(State.Context);
+    const {SIMPLE, ADVANCED} = state;
     return (
         <Fragment>
             <Control>
@@ -13,19 +14,19 @@ export function Mode() {
                 <Row>
                     <Radio
                         children="Simple"
-                        checked={mode === SIMPLE}
-                        onChange={() => setMode(SIMPLE)}
+                        checked={state.isSimple}
+                        onChange={() => setState({mode: SIMPLE})}
                     />
                     <Radio
                         children="Advanced"
-                        checked={mode === ADVANCED}
-                        onChange={() => setMode(ADVANCED)}
+                        checked={state.isAdvanced}
+                        onChange={() => setState({mode: ADVANCED})}
                     />
                 </Row>
             </Control>
-            {mode === SIMPLE ? (
+            {state.isSimple ? (
                 <Simple/>
-            ) : mode === ADVANCED ? (
+            ) : state.isAdvanced ? (
                 <Advanced/>
             ) : (
                 null
