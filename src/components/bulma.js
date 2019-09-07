@@ -1,4 +1,4 @@
-import {React} from 'core/react';
+import {Children, React} from 'core/react';
 import {classNames} from 'core/string';
 
 export function Box(props) {
@@ -75,6 +75,25 @@ export function Radio({children, ...props}) {
             <input type="radio" {...props}/>
             {children}
         </label>
+    );
+}
+
+export function Row({children, ...props}) {
+    return (
+        <div
+            children={
+                Children.map(
+                    children,
+                    child => (
+                        <div>
+                            {child}
+                        </div>
+                    ),
+                )
+            }
+            className="row"
+            {...props}
+        />
     );
 }
 
