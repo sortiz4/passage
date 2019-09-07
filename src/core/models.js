@@ -8,7 +8,7 @@ const SYMBOL_COUNT = 32;
 const OPTION_CEILING = 94;
 const LENGTH_CEILING = 16;
 
-const DEFAULT_CHARACTER_SET = (function() {
+const DEFAULT_CHARACTERS = (function() {
     const chars = [];
     for(let i = 33; i < 127; i++) {
         chars.push(String.fromCharCode(i));
@@ -30,7 +30,7 @@ export class State {
     numbers = true;
     symbols = true;
     export = false;
-    characters = '';
+    characters = DEFAULT_CHARACTERS;
     length = 16;
     amount = 1;
 
@@ -89,7 +89,7 @@ export class State {
         const characters = Array.from(
             new Set(
                 this.isSimple ? (
-                    DEFAULT_CHARACTER_SET
+                    DEFAULT_CHARACTERS
                 ) : (
                     this.characters
                 )

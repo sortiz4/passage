@@ -51,10 +51,20 @@ export function Field(props) {
     );
 }
 
-export function Input(props) {
+export function Group(props) {
+    return (
+        <div
+            className="is-grouped"
+            {...props}
+        />
+    );
+}
+
+export function Input({inputRef, ...props}) {
     return (
         <input
             className="input"
+            ref={inputRef}
             {...props}
         />
     );
@@ -84,14 +94,20 @@ export function Row({children, ...props}) {
             children={
                 Children.map(
                     children,
-                    child => (
-                        <div>
-                            {child}
-                        </div>
-                    ),
+                    child => <div>{child}</div>,
                 )
             }
             className="row"
+            {...props}
+        />
+    );
+}
+
+export function TextArea({inputRef, ...props}) {
+    return (
+        <textarea
+            className="textarea"
+            ref={inputRef}
             {...props}
         />
     );

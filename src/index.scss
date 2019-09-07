@@ -1,10 +1,13 @@
+// Variable overrides (propagating)
 $body-overflow-x: auto;
 $body-overflow-y: auto;
 $box-shadow: none;
 $input-shadow: none;
 
+// Bulma variables and classes
 @import '~bulma/bulma';
 
+// Variables (propagating)
 $ps-border-circle: 50%;
 $ps-border-color: $grey-lighter;
 $ps-border-round: $input-radius;
@@ -82,14 +85,25 @@ $ps-window-width: 600px;
   transition: $ps-transition;
 }
 
+.is-grouped {
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin-left: $ps-margin-small;
+  }
+}
+
 .row {
   display: flex;
-  justify-content: space-around;
 
   & > * {
     margin-bottom: $ps-margin-small;
     width: 50%;
   }
+}
+
+.textarea {
+  min-width: unset;
 }
 
 .window {

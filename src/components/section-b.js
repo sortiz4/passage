@@ -19,9 +19,9 @@ export function SectionB() {
                 <Label>Password length</Label>
                 <Input
                     type="number"
-                    defaultValue={state.length}
                     min={1}
                     max={Number.MAX_SAFE_INTEGER}
+                    defaultValue={state.length}
                     onChange={onLengthChange}
                 />
             </Field>
@@ -29,9 +29,9 @@ export function SectionB() {
                 <Label>Passwords to generate</Label>
                 <Input
                     type="number"
-                    defaultValue={state.amount}
                     min={1}
                     max={Number.MAX_SAFE_INTEGER}
+                    defaultValue={state.amount}
                     onChange={onAmountChange}
                 />
             </Field>
