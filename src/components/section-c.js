@@ -7,7 +7,21 @@ export function SectionC() {
     const [passwords, setPasswords] = React.useState(null);
     const state = React.useContext(State.Context)[0];
     const input = React.useRef();
+
+    // Compute the condition once
     const show = !state.export && passwords?.length > 0;
+
+    // Password generation event
+    const onGenerate = () => {
+        const passwords = state.generate();
+        if(state.export) {
+            const name = `${document.title}.txt`.toLowerCase();
+            Browser.download(passwords, name);
+            setPasswords(null);
+        } else {
+            setPasswords(passwords);
+        }
+    };
     return (
         <Fragment>
             {show ? (
@@ -45,18 +59,7 @@ export function SectionC() {
                 <Button
                     color={state.color}
                     children="Generate"
-                    onClick={() => {
-                        const passwords = state.generate();
-                        if(state.export) {
-                            Browser.download(
-                                passwords,
-                                `${document.title}.txt`.toLowerCase(),
-                            );
-                            setPasswords(null);
-                        } else {
-                            setPasswords(passwords);
-                        }
-                    }}
+                    onClick={onGenerate}
                 />
                 {show ? (
                     <Button

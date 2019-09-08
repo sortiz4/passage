@@ -57,7 +57,6 @@ module.exports = {
             // Prepend styles and polyfills to the entry point
             neutrino.config.entry('index')
                 .prepend('index.scss')
-                .prepend('regenerator-runtime')
                 .prepend('core-js');
 
             if(process.env.NODE_ENV === 'production') {
