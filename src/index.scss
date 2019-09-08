@@ -5,7 +5,10 @@ $box-shadow: none;
 $input-shadow: none;
 
 // Bulma variables and classes
-@import '~bulma/bulma';
+@import '~bulma/sass/utilities/all';
+@import '~bulma/sass/base/all';
+@import '~bulma/sass/elements/all';
+@import '~bulma/sass/form/all';
 
 // Variables (propagating)
 $ps-border-circle: 50%;
@@ -103,6 +106,7 @@ $ps-window-width: 600px;
 }
 
 .textarea {
+  border-width: $ps-border-width;
   min-width: unset;
 }
 

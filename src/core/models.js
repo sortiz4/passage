@@ -35,7 +35,12 @@ export class State {
     }
 
     get color() {
-        return COLORS[Math.max(0, Math.min(Math.trunc(this.score * 3), 2))];
+        return COLORS[
+            Math.min(
+                Math.trunc(this.score * (COLORS.length - 1)),
+                COLORS.length - 1,
+            )
+        ];
     }
 
     get selection() {

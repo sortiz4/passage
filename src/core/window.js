@@ -44,8 +44,6 @@ export class Random {
 export class UnicodeSet extends Set {
     constructor(a, b) {
         super();
-        this.a = a;
-        this.b = b;
         for(let i = a; i < b; i++) {
             this.add(String.fromCharCode(i));
         }
