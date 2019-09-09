@@ -98,9 +98,9 @@ $ps-window-width: 600px;
 
 .row {
   display: flex;
+  margin-bottom: $ps-margin-small;
 
   & > * {
-    margin-bottom: $ps-margin-small;
     width: 50%;
   }
 }

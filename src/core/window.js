@@ -4,22 +4,19 @@ import FileSaver from 'file-saver';
  * A small collection of browser shortcuts.
  */
 export class Browser {
-    static download(data, name) {
-        return new Promise(resolve => {
-            data = typeof data === 'string' ? (
-                new TextEncoder('UTF-8').encode(data)
-            ) : (
-                data
-            );
-            FileSaver.saveAs(
-                new Blob(
-                    [data.buffer],
-                    {type: 'application/octet-stream'},
-                ),
-                name,
-            );
-            resolve();
-        });
+    static download(name, data) {
+        data = typeof data === 'string' ? (
+            new TextEncoder('UTF-8').encode(data)
+        ) : (
+            data
+        );
+        FileSaver.saveAs(
+            new Blob(
+                [data.buffer],
+                {type: 'application/octet-stream'},
+            ),
+            name,
+        );
     }
 }
 

@@ -1,4 +1,4 @@
-import {Button, Field,  Group, Input, Label, TextArea} from 'components';
+import {Button, Field, Group, Input, Label, TextArea} from 'components';
 import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
 import {Browser} from 'core/window';
@@ -7,27 +7,28 @@ export function SectionC() {
     const [passwords, setPasswords] = React.useState(null);
     const state = React.useContext(State.Context)[0];
     const input = React.useRef();
-
-    // Compute the condition once
-    const show = !state.export && passwords?.length > 0;
-
-    // Password generation event
-    const onGenerate = () => {
-        const passwords = state.generate();
-        if(state.export) {
-            const name = `${document.title}.txt`.toLowerCase();
-            Browser.download(passwords, name);
-            setPasswords(null);
-        } else {
-            setPasswords(passwords);
-        }
-    };
     return (
         <Fragment>
-            {show ? (
-                <Field>
-                    <Label>Result</Label>
-                    <Group>
+            <Field>
+                <Button
+                    color={state.color}
+                    children="Generate"
+                    onClick={() => {
+                        const passwords = state.generate();
+                        if(state.export) {
+                            const name = `${document.title}.txt`.toLowerCase();
+                            Browser.download(name, passwords);
+                            setPasswords(null);
+                        } else {
+                            setPasswords(passwords);
+                        }
+                    }}
+                />
+            </Field>
+            {!state.export && passwords?.length > 0 ? (
+                <Fragment>
+                    <Field>
+                        <Label>Result</Label>
                         {state.amount > 1 ? (
                             <TextArea
                                 readOnly
@@ -42,35 +43,26 @@ export function SectionC() {
                                 value={passwords}
                             />
                         )}
+                    </Field>
+                    <Group>
                         <Button
-                            color="light"
+                            color={state.color}
                             children="Copy"
                             onClick={() => {
                                 input.current.select();
                                 document.execCommand('copy');
                             }}
                         />
+                        <Button
+                            color="light"
+                            children="Delete"
+                            onClick={() => setPasswords(null)}
+                        />
                     </Group>
-                </Field>
+                </Fragment>
             ) : (
                 null
             )}
-            <Group>
-                <Button
-                    color={state.color}
-                    children="Generate"
-                    onClick={onGenerate}
-                />
-                {show ? (
-                    <Button
-                        color="light"
-                        children="Clear"
-                        onClick={() => setPasswords(null)}
-                    />
-                ) : (
-                    null
-                )}
-            </Group>
         </Fragment>
     );
 }
