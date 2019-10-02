@@ -1,8 +1,8 @@
 import FileSaver from 'file-saver';
-import {Random as Rng} from 'random-js';
+import {browserCrypto, Random as Rng} from 'random-js';
 
 // Random number generator
-const rng = new Rng();
+const rng = new Rng(browserCrypto);
 
 /**
  * A small collection of browser shortcuts.
