@@ -1,4 +1,8 @@
 import FileSaver from 'file-saver';
+import {Random as Rng} from 'random-js';
+
+// Random number generator
+const rng = new Rng();
 
 /**
  * A small collection of browser shortcuts.
@@ -24,14 +28,8 @@ export class Browser {
  * An interface for generating random values.
  */
 export class Random {
-    static next(min = 0, max = 4_294_967_295) {
-        const range = max - min + 1;
-        const value = crypto.getRandomValues(new Uint32Array(1))[0];
-        return value >= Math.floor(4_294_967_295 / range) * range ? (
-            this.next(min, max)
-        ) : (
-            min + (value % range)
-        );
+    static next(min, max) {
+        return rng.integer(min, max);
     }
 }
 
