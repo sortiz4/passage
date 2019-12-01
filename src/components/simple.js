@@ -1,6 +1,6 @@
 import {Checkbox, Label, Row} from 'components';
-import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
+import {State} from 'core/states';
 
 export function Simple() {
     const [state, setState] = React.useContext(State.Context);

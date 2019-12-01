@@ -1,6 +1,6 @@
 import {Checkbox, Field, Input, Label} from 'components';
-import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
+import {State} from 'core/states';
 
 export function SectionB() {
     const [state, setState] = React.useContext(State.Context);

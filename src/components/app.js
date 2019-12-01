@@ -1,7 +1,7 @@
 import {Core} from 'components';
 import {Hooks} from 'core/hooks';
-import {State} from 'core/models';
 import {React} from 'core/react';
+import {State} from 'core/states';
 
 export function App() {
     const [state, setState] = Hooks.useClassState(State);

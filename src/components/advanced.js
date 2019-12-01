@@ -1,6 +1,6 @@
 import {Field, Input, Label} from 'components';
-import {State} from 'core/models';
 import {React} from 'core/react';
+import {State} from 'core/states';
 
 export function Advanced() {
     const [state, setState] = React.useContext(State.Context);

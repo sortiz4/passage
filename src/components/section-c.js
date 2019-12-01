@@ -1,6 +1,6 @@
 import {Button, Field, Group, Input, Label, TextArea} from 'components';
-import {State} from 'core/models';
 import {Fragment, React} from 'core/react';
+import {State} from 'core/states';
 import {Browser} from 'core/window';
 
 export function SectionC() {

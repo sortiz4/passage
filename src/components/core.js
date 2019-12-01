@@ -1,6 +1,6 @@
 import {Box, SectionA, SectionB, SectionC, Title, Window} from 'components';
-import {State} from 'core/models';
 import {React} from 'core/react';
+import {State} from 'core/states';
 
 export function Core() {
     const state = React.useContext(State.Context)[0];

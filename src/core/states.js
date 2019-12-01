@@ -1,22 +1,24 @@
 import {React} from 'core/react';
 import {Random, UnicodeSet} from 'core/window';
 
+// State values
+const SIMPLE = 0;
+const ADVANCED = 1;
 const OPTION_CEILING = 94;
 const LENGTH_CEILING = 16;
+const COLORS = ['danger', 'warning', 'success'];
+
+// Character sets
 const UPPERCASE = `${new UnicodeSet(65, 91)}`;
 const LOWERCASE = UPPERCASE.toLowerCase();
 const NUMBERS = `${new UnicodeSet(48, 58)}`;
 const SYMBOLS = `${new UnicodeSet(33, 127).exclude(UPPERCASE, LOWERCASE, NUMBERS)}`;
 const CHARACTERS = SYMBOLS + NUMBERS + UPPERCASE + LOWERCASE;
-const COLORS = ['danger', 'warning', 'success'];
 
 export class State {
     static Context = React.createContext();
 
-    SIMPLE = 0;
-    ADVANCED = 1;
-
-    mode = 0;
+    mode = SIMPLE;
     uppercase = true;
     lowercase = true;
     numbers = true;
@@ -27,11 +29,19 @@ export class State {
     amount = 1;
 
     get isSimple() {
-        return this.mode === this.SIMPLE;
+        return this.mode === SIMPLE;
+    }
+
+    set isSimple(value) {
+        this.mode = value ? SIMPLE : 0;
     }
 
     get isAdvanced() {
-        return this.mode === this.ADVANCED;
+        return this.mode === ADVANCED;
+    }
+
+    set isAdvanced(value) {
+        this.mode = value ? ADVANCED : 0;
     }
 
     get color() {
