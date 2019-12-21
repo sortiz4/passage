@@ -7,22 +7,27 @@ export function SectionC() {
     const [passwords, setPasswords] = React.useState(null);
     const state = React.useContext(State.Context)[0];
     const input = React.useRef();
+    function onGenerate() {
+        const passwords = state.generate();
+        if(state.export) {
+            const name = `${document.title}.txt`.toLowerCase();
+            Browser.download(name, passwords);
+            setPasswords(null);
+        } else {
+            setPasswords(passwords);
+        }
+    }
+    function onCopy() {
+        input.current.select();
+        document.execCommand('copy');
+    }
     return (
         <Fragment>
             <Field>
                 <Button
                     color={state.color}
                     children="Generate"
-                    onClick={() => {
-                        const passwords = state.generate();
-                        if(state.export) {
-                            const name = `${document.title}.txt`.toLowerCase();
-                            Browser.download(name, passwords);
-                            setPasswords(null);
-                        } else {
-                            setPasswords(passwords);
-                        }
-                    }}
+                    onClick={onGenerate}
                 />
             </Field>
             {!state.export && passwords?.length > 0 ? (
@@ -48,10 +53,7 @@ export function SectionC() {
                         <Button
                             color={state.color}
                             children="Copy"
-                            onClick={() => {
-                                input.current.select();
-                                document.execCommand('copy');
-                            }}
+                            onClick={onCopy}
                         />
                         <Button
                             color="light"

@@ -4,15 +4,15 @@ import {State} from 'core/states';
 
 export function SectionB() {
     const [state, setState] = React.useContext(State.Context);
-    const onLengthChange = event => {
+    function onLengthChange(event) {
         setState({length: Number(event.target.value)});
-    };
-    const onAmountChange = event => {
+    }
+    function onAmountChange(event) {
         setState({amount: Number(event.target.value)});
-    };
-    const onExportChange = event => {
+    }
+    function onExportChange(event) {
         setState({export: event.target.checked});
-    };
+    }
     return (
         <Fragment>
             <Field>

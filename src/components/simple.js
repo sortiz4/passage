@@ -4,18 +4,18 @@ import {State} from 'core/states';
 
 export function Simple() {
     const [state, setState] = React.useContext(State.Context);
-    const onUppercaseChange = event => {
+    function onUppercaseChange(event) {
         setState({uppercase: event.target.checked});
-    };
-    const onLowercaseChange = event => {
+    }
+    function onLowercaseChange(event) {
         setState({lowercase: event.target.checked});
-    };
-    const onNumbersChange = event => {
+    }
+    function onNumbersChange(event) {
         setState({numbers: event.target.checked});
-    };
-    const onSymbolsChange = event => {
+    }
+    function onSymbolsChange(event) {
         setState({symbols: event.target.checked});
-    };
+    }
     return (
         <Fragment>
             <Label>Options</Label>

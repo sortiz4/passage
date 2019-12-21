@@ -15,7 +15,6 @@ export function useClassState(constructor, initial) {
         state.current,
         React.useCallback(
             updater => {
-                console.log('set state called');
                 const [signal, setSignal] = params.current;
                 if(typeof updater !== 'function') {
                     Object.assign(state.current, updater);

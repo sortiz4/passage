@@ -4,9 +4,9 @@ import {State} from 'core/states';
 
 export function Advanced() {
     const [state, setState] = React.useContext(State.Context);
-    const onCharactersChange = event => {
+    function onCharactersChange(event) {
         setState({characters: event.target.value});
-    };
+    }
     return (
         <Field>
             <Label>Character set</Label>
