@@ -5,7 +5,7 @@ import {Browser} from 'core/window';
 
 export function SectionC() {
     const [passwords, setPasswords] = React.useState(null);
-    const state = React.useContext(State.Context)[0];
+    const state = State.useState()[0];
     const input = React.useRef();
     function onGenerate() {
         const passwords = state.generate();

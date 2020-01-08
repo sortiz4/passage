@@ -18,6 +18,10 @@ const CHARACTERS = SYMBOLS + NUMBERS + UPPERCASE + LOWERCASE;
 export class State {
     static Context = React.createContext();
 
+    static useState() {
+        return React.useContext(this.Context);
+    }
+
     mode = SIMPLE;
     uppercase = true;
     lowercase = true;

@@ -3,7 +3,7 @@ import {React} from 'core/react';
 import {State} from 'core/states';
 
 export function Advanced() {
-    const [state, setState] = React.useContext(State.Context);
+    const [state, setState] = State.useState();
     function onCharactersChange(event) {
         setState({characters: event.target.value});
     }

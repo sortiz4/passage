@@ -3,7 +3,7 @@ import {React} from 'core/react';
 import {State} from 'core/states';
 
 export function Core() {
-    const state = React.useContext(State.Context)[0];
+    const state = State.useState()[0];
     return (
         <Window color={state.color}>
             <Box>

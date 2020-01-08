@@ -3,7 +3,7 @@ import {Fragment, React} from 'core/react';
 import {State} from 'core/states';
 
 export function SectionB() {
-    const [state, setState] = React.useContext(State.Context);
+    const [state, setState] = State.useState();
     function onLengthChange(event) {
         setState({length: Number(event.target.value)});
     }
