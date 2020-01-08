@@ -3,7 +3,7 @@ import {React} from 'core/react';
 /**
  * Constructs the state once and mutates the state on subsequent updates.
  */
-export function useClassState(constructor, initial) {
+function useClassState(constructor, initial) {
     const state = React.useRef(
         React.useMemo(
             () => Object.assign(new constructor(), initial),
@@ -31,7 +31,7 @@ export function useClassState(constructor, initial) {
 /**
  * Reduces invalidation by storing parameters in a stable container.
  */
-export function useParams(current) {
+function useParams(current) {
     const params = React.useRef(current);
     params.current = current;
     return params;
