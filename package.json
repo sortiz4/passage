@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.8.0",
+    "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "file-saver": "^2.0.2",
     "random-js": "^2.1.0",
