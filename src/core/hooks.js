@@ -10,12 +10,12 @@ function useClassState(constructor, initial) {
             [constructor, initial],
         )
     );
-    const params = useParams(React.useState(true));
+    const inputs = useInputs(React.useState(true));
     return [
         state.current,
         React.useCallback(
             updater => {
-                const [signal, setSignal] = params.current;
+                const [signal, setSignal] = inputs.current;
                 if(typeof updater !== 'function') {
                     Object.assign(state.current, updater);
                 } else {
@@ -23,19 +23,19 @@ function useClassState(constructor, initial) {
                 }
                 setSignal(!signal);
             },
-            [state, params],
+            [state, inputs],
         ),
     ];
 }
 
 /**
- * Reduces invalidation by storing parameters in a stable container.
+ * Reduces invalidation by storing inputs in a stable container.
  */
-function useParams(current) {
-    const params = React.useRef(current);
-    params.current = current;
-    return params;
+function useInputs(current) {
+    const inputs = React.useRef(current);
+    inputs.current = current;
+    return inputs;
 }
 
 // Module namespace
-export const Hooks = {useClassState, useParams};
+export const Hooks = {useClassState, useInputs};

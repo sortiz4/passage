@@ -1,5 +1,4 @@
-import {Children, React} from 'core/react';
-import {classNames} from 'core/string';
+import {Children, classNames, React} from 'core/react';
 
 export function Box(props) {
     return (
