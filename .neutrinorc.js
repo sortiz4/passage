@@ -32,13 +32,6 @@ module.exports = {
                     'Chrome >= 70',
                 ],
             },
-
-            // Babel plugins
-            babel: {
-                plugins: [
-                    '@babel/plugin-proposal-numeric-separator',
-                ],
-            },
         }),
         neutrino => {
             // Add `node_modules` and `src` to the module resolver
