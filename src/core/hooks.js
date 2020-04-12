@@ -3,7 +3,7 @@ import {React} from 'core/react';
 /**
  * Constructs the state once and mutates the state on subsequent updates.
  */
-function useClassState(constructor, initial) {
+export function useClassState(constructor, initial) {
     const state = React.useRef(
         React.useMemo(
             () => Object.assign(new constructor(), initial),
@@ -31,7 +31,7 @@ function useClassState(constructor, initial) {
 /**
  * Reduces invalidation by storing inputs in a stable container.
  */
-function useInputs(current) {
+export function useInputs(current) {
     const inputs = React.useRef(current);
     inputs.current = current;
     return inputs;
