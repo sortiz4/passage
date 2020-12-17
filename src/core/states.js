@@ -89,9 +89,9 @@ export class State {
 
         // Write the password(s) to a string
         const collection = [];
-        for(let i = 0; i < this.amount; i++) {
+        for (let i = 0; i < this.amount; i++) {
             const instance = [];
-            for(let j = 0; j < this.length; j++) {
+            for (let j = 0; j < this.length; j++) {
                 const k = Random.next(0, characters.length - 1);
                 instance.push(characters[k]);
             }

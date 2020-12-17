@@ -39,14 +39,14 @@ export class Random {
 export class UnicodeSet extends Set {
     constructor(a, b) {
         super();
-        for(let i = a; i < b; i++) {
+        for (let i = a; i < b; i++) {
             this.add(String.fromCharCode(i));
         }
     }
 
     exclude(...args) {
-        for(const arg of args) {
-            for(const c of arg) {
+        for (const arg of args) {
+            for (const c of arg) {
                 this.delete(c);
             }
         }

@@ -9,7 +9,7 @@ export function SectionC() {
     const input = React.useRef();
     function onGenerate() {
         const passwords = state.generate();
-        if(state.export) {
+        if (state.export) {
             const name = `${document.title}.txt`.toLowerCase();
             Browser.download(name, passwords);
             setPasswords(null);
