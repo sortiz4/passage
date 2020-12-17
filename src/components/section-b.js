@@ -1,18 +1,22 @@
-import {Checkbox, Field, Input, Label} from 'components';
-import {Fragment, React} from 'core/react';
-import {State} from 'core/states';
+import { Checkbox, Field, Input, Label } from 'components';
+import { Fragment, React } from 'core/react';
+import { State } from 'core/states';
 
 export function SectionB() {
     const [state, setState] = State.useState();
+
     function onLengthChange(event) {
-        setState({length: Number(event.target.value)});
+        setState({ length: Number(event.target.value) });
     }
+
     function onAmountChange(event) {
-        setState({amount: Number(event.target.value)});
+        setState({ amount: Number(event.target.value) });
     }
+
     function onExportChange(event) {
-        setState({export: event.target.checked});
+        setState({ export: event.target.checked });
     }
+
     return (
         <Fragment>
             <Field>

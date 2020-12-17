@@ -1,12 +1,13 @@
-import {Button, Field, Group, Input, Label, TextArea} from 'components';
-import {Fragment, React} from 'core/react';
-import {State} from 'core/states';
-import {Browser} from 'core/window';
+import { Button, Field, Group, Input, Label, TextArea } from 'components';
+import { Fragment, React } from 'core/react';
+import { State } from 'core/states';
+import { Browser } from 'core/window';
 
 export function SectionC() {
     const [passwords, setPasswords] = React.useState(null);
     const state = State.useState()[0];
     const input = React.useRef();
+
     function onGenerate() {
         const passwords = state.generate();
         if (state.export) {
@@ -17,10 +18,12 @@ export function SectionC() {
             setPasswords(passwords);
         }
     }
+
     function onCopy() {
         input.current.select();
         document.execCommand('copy');
     }
+
     return (
         <Fragment>
             <Field>

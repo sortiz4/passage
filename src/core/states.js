@@ -1,5 +1,5 @@
-import {React} from 'core/react';
-import {Random, UnicodeSet} from 'core/window';
+import { React } from 'core/react';
+import { Random, UnicodeSet } from 'core/window';
 
 // State values
 const SIMPLE = 0;
@@ -49,12 +49,7 @@ export class State {
     }
 
     get color() {
-        return COLORS[
-            Math.min(
-                Math.trunc(this.score * (COLORS.length - 1)),
-                COLORS.length - 1,
-            )
-        ];
+        return COLORS[Math.min(Math.trunc(this.score * (COLORS.length - 1)), COLORS.length - 1)];
     }
 
     get selection() {

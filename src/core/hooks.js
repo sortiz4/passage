@@ -1,4 +1,4 @@
-import {React} from 'core/react';
+import { React } from 'core/react';
 
 /**
  * Constructs the state once and mutates the state on subsequent updates.
@@ -38,4 +38,4 @@ export function useInputs(current) {
 }
 
 // Module namespace
-export const Hooks = {useClassState, useInputs};
+export const Hooks = { useClassState, useInputs };

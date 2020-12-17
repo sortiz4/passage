@@ -1,5 +1,5 @@
 import FileSaver from 'file-saver';
-import {browserCrypto, Random as Rng} from 'random-js';
+import { browserCrypto, Random as Rng } from 'random-js';
 
 // Random number generator
 const rng = new Rng(browserCrypto);
@@ -15,10 +15,7 @@ export class Browser {
             data
         );
         FileSaver.saveAs(
-            new Blob(
-                [data.buffer],
-                {type: 'application/octet-stream'},
-            ),
+            new Blob([data.buffer], { type: 'application/octet-stream' }),
             name,
         );
     }

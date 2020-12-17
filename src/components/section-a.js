@@ -1,6 +1,6 @@
-import {Advanced, Control, Label, Radio, Row, Simple} from 'components';
-import {Fragment, React} from 'core/react';
-import {State} from 'core/states';
+import { Advanced, Control, Label, Radio, Row, Simple } from 'components';
+import { Fragment, React } from 'core/react';
+import { State } from 'core/states';
 
 export function SectionA() {
     const [state, setState] = State.useState();
@@ -12,12 +12,12 @@ export function SectionA() {
                     <Radio
                         children="Simple"
                         checked={state.isSimple}
-                        onChange={() => setState({isSimple: true})}
+                        onChange={() => setState({ isSimple: true })}
                     />
                     <Radio
                         children="Advanced"
                         checked={state.isAdvanced}
-                        onChange={() => setState({isAdvanced: true})}
+                        onChange={() => setState({ isAdvanced: true })}
                     />
                 </Row>
             </Control>
