@@ -54,15 +54,17 @@ module.exports = {
                     .minimizer('terser')
                     .use(
                         require('terser-webpack-plugin'),
-                        [{
-                            cache: true,
-                            parallel: true,
-                            terserOptions: {
-                                output: {
-                                    comments: false,
+                        [
+                            {
+                                cache: true,
+                                parallel: true,
+                                terserOptions: {
+                                    output: {
+                                        comments: false,
+                                    },
                                 },
                             },
-                        }],
+                        ],
                     );
 
                 // Disable application splitting
