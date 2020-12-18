@@ -17,11 +17,6 @@ const CHARACTERS = SYMBOLS + NUMBERS + UPPERCASE + LOWERCASE;
 
 export class State {
   static Context = React.createContext();
-
-  static useState() {
-    return React.useContext(this.Context);
-  }
-
   mode = SIMPLE;
   uppercase = true;
   lowercase = true;
@@ -31,6 +26,10 @@ export class State {
   characters = CHARACTERS;
   length = 16;
   amount = 1;
+
+  static useState() {
+    return React.useContext(this.Context);
+  }
 
   get isSimple() {
     return this.mode === SIMPLE;
