@@ -4,10 +4,10 @@ import { React } from 'core/react';
 import { State } from 'core/states';
 
 export function App() {
-    const [state, setState] = Hooks.useClassState(State);
-    return (
-        <State.Context.Provider value={[state, setState]}>
-            <Core/>
-        </State.Context.Provider>
-    );
+  const [state, setState] = Hooks.useClassState(State);
+  return (
+    <State.Context.Provider value={[state, setState]}>
+      <Core/>
+    </State.Context.Provider>
+  );
 }

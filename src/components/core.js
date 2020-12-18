@@ -3,18 +3,18 @@ import { React } from 'core/react';
 import { State } from 'core/states';
 
 export function Core() {
-    const state = State.useState()[0];
-    return (
-        <Window color={state.color}>
-            <Box>
-                <Title centered>
-                    Passage
-                </Title>
-                <hr/>
-                <SectionA/>
-                <SectionB/>
-                <SectionC/>
-            </Box>
-        </Window>
-    );
+  const state = State.useState()[0];
+  return (
+    <Window color={state.color}>
+      <Box>
+        <Title centered>
+          Passage
+        </Title>
+        <hr/>
+        <SectionA/>
+        <SectionB/>
+        <SectionC/>
+      </Box>
+    </Window>
+  );
 }
