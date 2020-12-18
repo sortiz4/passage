@@ -7,7 +7,9 @@ export function Core() {
     return (
         <Window color={state.color}>
             <Box>
-                <Title centered>Passage</Title>
+                <Title centered>
+                    Passage
+                </Title>
                 <hr/>
                 <SectionA/>
                 <SectionB/>
