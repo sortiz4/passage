@@ -1,0 +1,141 @@
+// Bulma variable overrides
+$body-overflow-x: auto;
+$body-overflow-y: auto;
+$box-shadow: none;
+$input-shadow: none;
+
+// Import Bulma
+@import '~bulma/sass/helpers/all';
+@import '~bulma/sass/utilities/all';
+@import '~bulma/sass/base/all';
+@import '~bulma/sass/form/all';
+@import '~bulma/sass/elements/all';
+
+// App theme
+$app-border-circle: 50%;
+$app-border-color: $grey-lighter;
+$app-border-round: $input-radius;
+$app-border-style: solid;
+$app-border-width: 2px;
+$app-button-weight: 600;
+$app-margin-small: 0.5em;
+$app-radio-size: 20px;
+$app-svg-checkbox: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjEyIDEgNSA3LjUgMiA1IDEgNS41IDUgMTAgMTMgMS41Ii8+PC9zdmc+';
+$app-svg-radio: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI4IiBjeT0iOCIgcj0iMiIvPjwvc3ZnPg==';
+$app-transition: 250ms ease;
+$app-window-width: 600px;
+
+.button {
+  box-sizing: border-box;
+  font-weight: $app-button-weight;
+  transition: $app-transition;
+}
+
+.checkbox,
+.radio {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox > input,
+.radio > input {
+  background: white no-repeat 50% 50%;
+  border: $app-border-width $app-border-style $app-border-color;
+  box-sizing: border-box;
+  cursor: pointer;
+  font: inherit;
+  overflow: hidden;
+  transition: $app-transition;
+  vertical-align: middle;
+  width: $app-radio-size;
+  height: $app-radio-size;
+  margin-right: $app-margin-small;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  &:checked {
+    background-color: $link;
+    border-color: transparent;
+  }
+
+  &:checked,
+  &:active,
+  &:focus {
+    outline: transparent none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+}
+
+.checkbox > input {
+  border-radius: $app-border-round;
+
+  &:checked {
+    background-image: url($app-svg-checkbox);
+  }
+}
+
+.radio > input {
+  border-radius: $app-border-circle;
+
+  &:checked {
+    background-image: url($app-svg-radio);
+  }
+}
+
+.input {
+  border-width: $app-border-width;
+  box-sizing: border-box;
+  transition: $app-transition;
+}
+
+.is-grouped {
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin-left: $app-margin-small;
+  }
+}
+
+.row {
+  display: flex;
+  margin-bottom: $app-margin-small;
+
+  & > * {
+    width: 50%;
+  }
+}
+
+.textarea {
+  border-width: $app-border-width;
+  min-width: unset;
+}
+
+.window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: $app-transition;
+
+  & > * {
+    width: $app-window-width;
+  }
+
+  &.is-success {
+    background: $success;
+  }
+
+  &.is-warning {
+    background: $warning;
+  }
+
+  &.is-danger {
+    background: $danger;
+  }
+}
