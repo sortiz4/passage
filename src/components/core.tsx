@@ -6,9 +6,9 @@ import { SectionC } from './section-c';
 import { useAppState } from '../states/app';
 
 export function Core(): ReactElement {
-  const appState = useAppState()[0];
+  const state = useAppState()[0];
   return (
-    <Window color={appState.color}>
+    <Window color={state.color}>
       <Box>
         <Title centered>
           Passage

@@ -2,17 +2,17 @@ import { Fragment, ReactElement } from 'react';
 import { Advanced } from './advanced';
 import { Control, Label, Radio, Row } from './bulma';
 import { Simple } from './simple';
-import { useAppState } from '../states/app';
+import { Mode, useAppState } from '../states/app';
 
 export function SectionA(): ReactElement {
-  const [appState, setAppState] = useAppState();
+  const [state, setState] = useAppState();
 
   function onToSimple(): void {
-    setAppState(appState.toSimple());
+    setState({ mode: Mode.Simple });
   }
 
   function onToAdvanced(): void {
-    setAppState(appState.toAdvanced());
+    setState({ mode: Mode.Advanced });
   }
 
   return (
@@ -22,20 +22,20 @@ export function SectionA(): ReactElement {
           Mode
         </Label>
         <Row>
-          <Radio checked={appState.isSimple} onChange={onToSimple}>
+          <Radio checked={state.mode === Mode.Simple} onChange={onToSimple}>
             Simple
           </Radio>
-          <Radio checked={appState.isAdvanced} onChange={onToAdvanced}>
+          <Radio checked={state.mode === Mode.Advanced} onChange={onToAdvanced}>
             Advanced
           </Radio>
         </Row>
       </Control>
-      {appState.isSimple ? (
+      {state.mode === Mode.Simple ? (
         <Simple/>
-      ) : appState.isAdvanced ? (
+      ) : state.mode === Mode.Advanced ? (
         <Advanced/>
       ) : (
-        void 0
+        <Fragment/>
       )}
     </Fragment>
   );

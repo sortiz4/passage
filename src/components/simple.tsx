@@ -3,22 +3,22 @@ import { Checkbox, Label, Row } from './bulma';
 import { useAppState } from '../states/app';
 
 export function Simple(): ReactElement {
-  const [appState, setAppState] = useAppState();
+  const [state, setState] = useAppState();
 
   function onUppercaseChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ hasUppercase: event.target.checked });
+    setState({ hasUppercase: event.target.checked });
   }
 
   function onLowercaseChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ hasLowercase: event.target.checked });
+    setState({ hasLowercase: event.target.checked });
   }
 
   function onNumbersChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ hasNumbers: event.target.checked });
+    setState({ hasNumbers: event.target.checked });
   }
 
   function onSymbolsChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ hasSymbols: event.target.checked });
+    setState({ hasSymbols: event.target.checked });
   }
 
   return (
@@ -27,18 +27,18 @@ export function Simple(): ReactElement {
         Options
       </Label>
       <Row>
-        <Checkbox defaultChecked={appState.hasUppercase} onChange={onUppercaseChange}>
+        <Checkbox defaultChecked={state.hasUppercase} onChange={onUppercaseChange}>
           Uppercase
         </Checkbox>
-        <Checkbox defaultChecked={appState.hasLowercase} onChange={onLowercaseChange}>
+        <Checkbox defaultChecked={state.hasLowercase} onChange={onLowercaseChange}>
           Lowercase
         </Checkbox>
       </Row>
       <Row>
-        <Checkbox defaultChecked={appState.hasNumbers} onChange={onNumbersChange}>
+        <Checkbox defaultChecked={state.hasNumbers} onChange={onNumbersChange}>
           Numbers
         </Checkbox>
-        <Checkbox defaultChecked={appState.hasSymbols} onChange={onSymbolsChange}>
+        <Checkbox defaultChecked={state.hasSymbols} onChange={onSymbolsChange}>
           Symbols
         </Checkbox>
       </Row>

@@ -3,10 +3,10 @@ import { Field, Input, Label } from './bulma';
 import { useAppState } from '../states/app';
 
 export function Advanced(): ReactElement {
-  const [appState, setAppState] = useAppState();
+  const [state, setState] = useAppState();
 
   function onCharactersChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ characters: event.target.value });
+    setState({ characters: event.target.value });
   }
 
   return (
@@ -14,7 +14,7 @@ export function Advanced(): ReactElement {
       <Label>
         Character set
       </Label>
-      <Input type="text" defaultValue={appState.characters} onChange={onCharactersChange}/>
+      <Input type="text" defaultValue={state.characters} onChange={onCharactersChange}/>
     </Field>
   );
 }

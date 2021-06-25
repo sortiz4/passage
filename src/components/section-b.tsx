@@ -3,18 +3,18 @@ import { Checkbox, Field, Input, Label } from './bulma';
 import { useAppState } from '../states/app';
 
 export function SectionB(): ReactElement {
-  const [appState, setAppState] = useAppState();
+  const [state, setState] = useAppState();
 
   function onLengthChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ length: Number(event.target.value) });
+    setState({ length: Number(event.target.value) });
   }
 
   function onAmountChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ amount: Number(event.target.value) });
+    setState({ amount: Number(event.target.value) });
   }
 
   function onExportChange(event: ChangeEvent<HTMLInputElement>): void {
-    setAppState({ shouldExport: event.target.checked });
+    setState({ shouldExport: event.target.checked });
   }
 
   return (
@@ -23,16 +23,16 @@ export function SectionB(): ReactElement {
         <Label>
           Password length
         </Label>
-        <Input type="number" min={1} max={Number.MAX_SAFE_INTEGER} defaultValue={appState.length} onChange={onLengthChange}/>
+        <Input type="number" min={1} max={Number.MAX_SAFE_INTEGER} defaultValue={state.length} onChange={onLengthChange}/>
       </Field>
       <Field>
         <Label>
           Passwords to generate
         </Label>
-        <Input type="number" min={1} max={Number.MAX_SAFE_INTEGER} defaultValue={appState.amount} onChange={onAmountChange}/>
+        <Input type="number" min={1} max={Number.MAX_SAFE_INTEGER} defaultValue={state.amount} onChange={onAmountChange}/>
       </Field>
       <Field>
-        <Checkbox defaultChecked={appState.shouldExport} onChange={onExportChange}>
+        <Checkbox defaultChecked={state.shouldExport} onChange={onExportChange}>
           Save to file
         </Checkbox>
       </Field>

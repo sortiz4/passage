@@ -1,13 +1,13 @@
 import { createContext, useContext, useReducer } from 'react';
 import { getRandom, UnicodeSet } from '../utils';
 
-enum AppStateMode {
+export enum Mode {
   Simple,
   Advanced,
 }
 
-interface AppState {
-  readonly mode: AppStateMode;
+export interface AppState {
+  readonly mode: Mode;
   readonly amount: number;
   readonly length: number;
   readonly characters: string;
@@ -16,14 +16,9 @@ interface AppState {
   readonly hasLowercase: boolean;
   readonly hasNumbers: boolean;
   readonly hasSymbols: boolean;
-  readonly isSimple: boolean;
-  readonly isAdvanced: boolean;
   readonly selection: string[];
   readonly score: number;
   readonly color: string;
-  toSimple(): Partial<AppState>;
-  toAdvanced(): Partial<AppState>;
-  createPasswords(): string;
 }
 
 type AppStateContextValue = [AppState, (_: Partial<AppState>) => void];
@@ -47,7 +42,7 @@ export const AppStateProvider = AppStateContext.Provider;
 
 function createAppState(): AppState {
   return {
-    mode: AppStateMode.Simple,
+    mode: Mode.Simple,
     amount: 1,
     length: 16,
     characters: all,
@@ -56,35 +51,9 @@ function createAppState(): AppState {
     hasLowercase: true,
     hasNumbers: true,
     hasSymbols: true,
-    isSimple: false,
-    isAdvanced: false,
     selection: [],
     score: 0,
     color: '',
-
-    toSimple(): Partial<AppState> {
-      return { mode: AppStateMode.Simple };
-    },
-
-    toAdvanced(): Partial<AppState> {
-      return { mode: AppStateMode.Advanced };
-    },
-
-    createPasswords(): string {
-      // Get a unique set of selected characters
-      const characters = this.selection;
-
-      // Write the password(s) to a string
-      const passwords = [];
-      for (let i = 0; i < this.amount; i++) {
-        const password = [];
-        for (let j = 0; j < this.length; j++) {
-          password.push(characters[getRandom(0, characters.length - 1)]);
-        }
-        passwords.push(password.join(''));
-      }
-      return passwords.join('\n');
-    },
   };
 }
 
@@ -94,7 +63,7 @@ function createInitialAppState(): AppState {
 
 function createNextAppState(current: AppState): AppState {
   function getSelection(): string[] {
-    const set = isSimple ? (
+    const set = current.mode === Mode.Simple ? (
       (current.hasUppercase ? uppercase : '') +
       (current.hasLowercase ? lowercase : '') +
       (current.hasNumbers ? numbers : '') +
@@ -122,21 +91,33 @@ function createNextAppState(current: AppState): AppState {
     return colors[Math.min(Math.trunc(offset), length)];
   }
 
-  const isSimple = current.mode === AppStateMode.Simple;
-  const isAdvanced = current.mode === AppStateMode.Advanced;
   const selection = getSelection();
   const score = getScore();
   const color = getColor();
 
   const next = {
-    isSimple,
-    isAdvanced,
     selection,
     score,
     color,
   };
 
   return Object.assign({}, current, next);
+}
+
+export function createPasswords(state: AppState): string {
+  // Get a unique set of selected characters
+  const characters = state.selection;
+
+  // Write the password(s) to a string
+  const passwords = [];
+  for (let i = 0; i < state.amount; i++) {
+    const password = [];
+    for (let j = 0; j < state.length; j++) {
+      password.push(characters[getRandom(0, characters.length - 1)]);
+    }
+    passwords.push(password.join(''));
+  }
+  return passwords.join('\n');
 }
 
 function setAppState(current: AppState, next: Partial<AppState>): AppState {
