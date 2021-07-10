@@ -21,7 +21,7 @@ export interface AppState {
   readonly color: string;
 }
 
-type AppStateContextValue = [AppState, (_: Partial<AppState>) => void];
+type AppStateContext = [AppState, (_: Partial<AppState>) => void];
 
 // State values
 const optionCeiling = 94;
@@ -36,9 +36,9 @@ const symbols = `${new UnicodeSet(33, 127).exclude(uppercase, lowercase, numbers
 const all = symbols + numbers + uppercase + lowercase;
 
 // Context components
-const AppStateContext = createContext<AppStateContextValue>(null as unknown as AppStateContextValue);
-export const AppStateConsumer = AppStateContext.Consumer;
-export const AppStateProvider = AppStateContext.Provider;
+const Context = createContext<AppStateContext>(null as unknown as AppStateContext);
+export const AppStateConsumer = Context.Consumer;
+export const AppStateProvider = Context.Provider;
 
 function createAppState(): AppState {
   return {
@@ -124,10 +124,10 @@ function setAppState(current: AppState, next: Partial<AppState>): AppState {
   return createNextAppState(Object.assign({}, current, next));
 }
 
-export function useAppState(): AppStateContextValue {
-  return useContext(AppStateContext);
+export function useAppState(): AppStateContext {
+  return useContext(Context);
 }
 
-export function useInitialAppState(): AppStateContextValue {
+export function useInitialAppState(): AppStateContext {
   return useReducer(setAppState, null, createInitialAppState);
 }
