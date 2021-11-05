@@ -8,8 +8,7 @@ additional privacy.
 ## Compilation
 Those seeking to compile must have...
 
-- Node.js 16.0+
-- NPM 7.0+
+- Node.js 16.0
 
 Once these requirements have been met, simply clone the repository and execute
 `npm install && npm run build` (this will setup and compile the project). Once
