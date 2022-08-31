@@ -13,7 +13,6 @@ export function Core(): ReactElement {
         <Title centered>
           Passage
         </Title>
-        <hr/>
         <SectionA/>
         <SectionB/>
         <SectionC/>
