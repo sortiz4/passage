@@ -23,6 +23,8 @@ $app-radio-size: 20px;
 $app-svg-checkbox: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjEyIDEgNSA3LjUgMiA1IDEgNS41IDUgMTAgMTMgMS41Ii8+PC9zdmc+';
 $app-svg-radio: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI4IiBjeT0iOCIgcj0iMiIvPjwvc3ZnPg==';
 $app-transition: 250ms ease;
+$app-window-border: 10px solid white;
+$app-window-border-radius: 20px;
 $app-window-width: 600px;
 
 .button {
@@ -112,6 +114,8 @@ $app-window-width: 600px;
 }
 
 .window {
+  border: $app-window-border;
+  border-radius: $app-window-border-radius;
   display: flex;
   align-items: center;
   justify-content: center;
