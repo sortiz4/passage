@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
+import { useAppState } from './app.state';
 import { Box, Title, Window } from './bulma';
 import { SectionA } from './section-a';
 import { SectionB } from './section-b';
 import { SectionC } from './section-c';
-import { useAppState } from '../states/app';
 
 export function Core(): ReactElement {
   const state = useAppState()[0];

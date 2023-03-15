@@ -1,6 +1,6 @@
 import { Fragment, MutableRefObject, ReactElement, useRef, useState } from 'react';
+import { createPasswords, useAppState } from './app.state';
 import { Button, Field, Group, Input, Label, TextArea } from './bulma';
-import { createPasswords, useAppState } from '../states/app';
 import { createDownload } from '../utils';
 
 export function SectionC(): ReactElement {

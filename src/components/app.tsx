@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
+import { AppStateProvider, useInitialAppState } from './app.state';
 import { Core } from './core';
-import { AppStateProvider, useInitialAppState } from '../states/app';
 
 export function App(): ReactElement {
   return (

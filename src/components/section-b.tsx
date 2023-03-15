@@ -1,6 +1,6 @@
 import { ChangeEvent, Fragment, ReactElement } from 'react';
+import { useAppState } from './app.state';
 import { Checkbox, Field, Input, Label } from './bulma';
-import { useAppState } from '../states/app';
 
 export function SectionB(): ReactElement {
   const [state, setState] = useAppState();

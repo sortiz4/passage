@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement } from 'react';
+import { useAppState } from './app.state';
 import { Field, Input, Label } from './bulma';
-import { useAppState } from '../states/app';
 
 export function Advanced(): ReactElement {
   const [state, setState] = useAppState();
