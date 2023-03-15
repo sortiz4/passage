@@ -1,4 +1,4 @@
-// Bulma variable overrides
+// Bulma defaults
 $body-overflow-x: auto;
 $body-overflow-y: auto;
 $box-shadow: none;
@@ -11,26 +11,42 @@ $input-shadow: none;
 @import '~bulma/sass/form/all';
 @import '~bulma/sass/elements/all';
 
-// App theme
-$app-border-circle: 50%;
+// App variables
 $app-border-color: $grey-lighter;
-$app-border-round: $input-radius;
+$app-border-radius-circle: 50%;
+$app-border-radius: $input-radius;
 $app-border-style: solid;
 $app-border-width: 2px;
-$app-button-weight: 600;
-$app-margin-small: 0.5em;
-$app-radio-size: 20px;
-$app-svg-checkbox: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjEyIDEgNSA3LjUgMiA1IDEgNS41IDUgMTAgMTMgMS41Ii8+PC9zdmc+';
-$app-svg-radio: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI4IiBjeT0iOCIgcj0iMiIvPjwvc3ZnPg==';
+$app-margin-small: 0.5rem;
 $app-transition: 250ms ease;
-$app-window-border: 10px solid white;
-$app-window-border-radius: 20px;
+$app-success: $success;
+$app-warning: $warning;
+$app-danger: $danger;
+
+// App theme
+$app-button-font-weight: 600;
+$app-button-transition: $app-transition;
+$app-checkbox-border: $app-border-width $app-border-style $app-border-color;
+$app-checkbox-border-radius: $app-border-radius;
+$app-checkbox-margin: $app-margin-small;
+$app-checkbox-size: 20px;
+$app-checkbox-transition: $app-transition;
+$app-checkbox-checked-background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjEyIDEgNSA3LjUgMiA1IDEgNS41IDUgMTAgMTMgMS41Ii8+PC9zdmc+');
+$app-checkbox-checked-background-color: $link;
+$app-group-margin: $app-margin-small;
+$app-input-border-width: $app-border-width;
+$app-input-transition: $app-transition;
+$app-radio-border-radius: $app-border-radius-circle;
+$app-radio-checked-background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI4IiBjeT0iOCIgcj0iMiIvPjwvc3ZnPg==');
+$app-row-margin: $app-margin-small;
+$app-textarea-border-width: $app-border-width;
+$app-window-transition: $app-transition;
 $app-window-width: 600px;
 
 .button {
   box-sizing: border-box;
-  font-weight: $app-button-weight;
-  transition: $app-transition;
+  font-weight: $app-button-font-weight;
+  transition: $app-button-transition;
 }
 
 .checkbox,
@@ -42,21 +58,21 @@ $app-window-width: 600px;
 .checkbox > input,
 .radio > input {
   background: white no-repeat 50% 50%;
-  border: $app-border-width $app-border-style $app-border-color;
+  border: $app-checkbox-border;
   box-sizing: border-box;
   cursor: pointer;
   font: inherit;
   overflow: hidden;
-  transition: $app-transition;
+  transition: $app-checkbox-transition;
   vertical-align: middle;
-  width: $app-radio-size;
-  height: $app-radio-size;
-  margin-right: $app-margin-small;
+  width: $app-checkbox-size;
+  height: $app-checkbox-size;
+  margin-right: $app-checkbox-margin;
   -moz-appearance: none;
   -webkit-appearance: none;
 
   &:checked {
-    background-color: $link;
+    background-color: $app-checkbox-checked-background-color;
     border-color: transparent;
   }
 
@@ -70,38 +86,38 @@ $app-window-width: 600px;
 }
 
 .checkbox > input {
-  border-radius: $app-border-round;
+  border-radius: $app-checkbox-border-radius;
 
   &:checked {
-    background-image: url($app-svg-checkbox);
+    background-image: $app-checkbox-checked-background;
   }
 }
 
 .radio > input {
-  border-radius: $app-border-circle;
+  border-radius: $app-radio-border-radius;
 
   &:checked {
-    background-image: url($app-svg-radio);
+    background-image: $app-radio-checked-background;
   }
 }
 
 .input {
-  border-width: $app-border-width;
+  border-width: $app-input-border-width;
   box-sizing: border-box;
-  transition: $app-transition;
+  transition: $app-input-transition;
 }
 
 .is-grouped {
   display: flex;
 
   & > *:not(:first-child) {
-    margin-left: $app-margin-small;
+    margin-left: $app-group-margin;
   }
 }
 
 .row {
   display: flex;
-  margin-bottom: $app-margin-small;
+  margin-bottom: $app-row-margin;
 
   & > * {
     width: 50%;
@@ -109,13 +125,11 @@ $app-window-width: 600px;
 }
 
 .textarea {
-  border-width: $app-border-width;
+  border-width: $app-textarea-border-width;
   min-width: unset;
 }
 
 .window {
-  border: $app-window-border;
-  border-radius: $app-window-border-radius;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,21 +139,21 @@ $app-window-width: 600px;
   bottom: 0;
   left: 0;
   right: 0;
-  transition: $app-transition;
+  transition: $app-window-transition;
 
   & > * {
     width: $app-window-width;
   }
 
   &.is-success {
-    background: $success;
+    background: $app-success;
   }
 
   &.is-warning {
-    background: $warning;
+    background: $app-warning;
   }
 
   &.is-danger {
-    background: $danger;
+    background: $app-danger;
   }
 }
