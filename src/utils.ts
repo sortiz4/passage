@@ -9,7 +9,7 @@ export function getRandom(min: number, max: number): number {
   const buf = new Uint32Array(1);
   crypto.getRandomValues(buf);
 
-  let ref = buf[0] / (0xffffffff + 1);
+  const ref = buf[0] / (0xffffffff + 1);
 
   return Math.floor(ref * (max - min + 1)) + min;
 }
