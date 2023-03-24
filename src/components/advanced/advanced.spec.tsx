@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Advanced } from './advanced.component';
+import { Advanced } from './advanced';
 
 describe('Advanced', () => {
   it('should render', () => {

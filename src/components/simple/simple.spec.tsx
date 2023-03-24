@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Simple } from './simple.component';
+import { Simple } from './simple';
 
 describe('Simple', () => {
   it('should render', () => {

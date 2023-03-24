@@ -1,5 +1,5 @@
 import { ReactElement, StrictMode } from 'react';
-import { App } from '../app/app.component';
+import { App } from '../app/app';
 
 export function Root(): ReactElement {
   return (

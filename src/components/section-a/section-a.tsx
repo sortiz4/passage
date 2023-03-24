@@ -1,7 +1,7 @@
 import { Fragment, ReactElement } from 'react';
-import { Advanced } from '../advanced/advanced.component';
+import { Advanced } from '../advanced/advanced';
 import { Mode, useAppState } from '../app/app.state';
-import { Simple } from '../simple/simple.component';
+import { Simple } from '../simple/simple';
 import { Control, Label, Radio, Row } from '../../bulma';
 
 export function SectionA(): ReactElement {

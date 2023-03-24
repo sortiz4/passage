@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import { Root } from '../components/root/root.component';
+import { Root } from '../components/root/root';
 
 export default function Page(): ReactElement {
   return (

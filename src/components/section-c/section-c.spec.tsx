@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { SectionC } from './section-c.component';
+import { SectionC } from './section-c';
 
 describe('SectionC', () => {
   it('should render', () => {
