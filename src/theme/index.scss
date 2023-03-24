@@ -5,11 +5,11 @@ $box-shadow: none;
 $input-shadow: none;
 
 // Import Bulma
-@import '~bulma/sass/helpers/all';
-@import '~bulma/sass/utilities/all';
-@import '~bulma/sass/base/all';
-@import '~bulma/sass/form/all';
-@import '~bulma/sass/elements/all';
+@import 'bulma/sass/helpers/_all.sass';
+@import 'bulma/sass/utilities/_all.sass';
+@import 'bulma/sass/base/_all.sass';
+@import 'bulma/sass/form/_all.sass';
+@import 'bulma/sass/elements/_all.sass';
 
 // App variables
 $app-border-color: $grey-lighter;

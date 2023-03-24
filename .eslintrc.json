@@ -13,8 +13,9 @@
         "createDefaultProgram": true
       },
       "extends": [
-        "react-app",
-        "react-app/jest"
+        "eslint:recommended",
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended"
       ],
       "rules": {
         "@typescript-eslint/ban-types": [
@@ -67,6 +68,7 @@
           "always"
         ],
         "prefer-arrow/prefer-arrow-functions": 0,
+        "react/no-children-prop": 0,
         "semi": [
           "error",
           "always"
@@ -87,9 +89,8 @@
         "node": true
       },
       "extends": [
-        "react-app",
-        "react-app/jest",
-        "eslint:recommended"
+        "eslint:recommended",
+        "next/core-web-vitals"
       ],
       "rules": {
         "arrow-body-style": 0,
@@ -109,6 +110,7 @@
           "always"
         ],
         "prefer-arrow/prefer-arrow-functions": 0,
+        "react/no-children-prop": 0,
         "semi": [
           "error",
           "always"

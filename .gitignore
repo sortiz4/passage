@@ -1,8 +1,10 @@
 .DS_Store
 /.idea
+/.next
 /.vscode
 /build
 /coverage
+/next-env.d.ts
 /node_modules
 /package-lock.json
 /public/static/icons
