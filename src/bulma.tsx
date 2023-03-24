@@ -115,11 +115,9 @@ export function Radio({ children, ...props }: HtmlInputProps): ReactElement {
 
 export function Row({ children, ...props }: HtmlDivProps): ReactElement {
   return (
-    <div
-      children={Children.map(children, child => <div>{child}</div>)}
-      className="row"
-      {...props}
-    />
+    <div className="row" {...props}>
+      {Children.map(children, child => <div>{child}</div>)}
+    </div>
   );
 }
 

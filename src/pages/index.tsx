@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ReactElement } from 'react';
 import { Root } from '../components/root/root.component';
 
-export default function Index(): ReactElement {
+export default function Page(): ReactElement {
   return (
     <>
       <Head>

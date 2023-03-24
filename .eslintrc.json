@@ -68,7 +68,6 @@
           "always"
         ],
         "prefer-arrow/prefer-arrow-functions": 0,
-        "react/no-children-prop": 0,
         "semi": [
           "error",
           "always"
@@ -110,7 +109,6 @@
           "always"
         ],
         "prefer-arrow/prefer-arrow-functions": 0,
-        "react/no-children-prop": 0,
         "semi": [
           "error",
           "always"
