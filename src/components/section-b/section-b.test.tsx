@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { Core } from './core';
+import { SectionB } from './section-b.component';
 
-describe('Core', () => {
+describe('SectionB', () => {
   it('should render', () => {
-    const { baseElement } = render(<Core/>);
+    const { baseElement } = render(<SectionB/>);
     expect(baseElement).toBeDefined();
   });
 });

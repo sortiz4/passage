@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { Root } from './root';
+import { Simple } from './simple.component';
 
-describe('Root', () => {
+describe('Simple', () => {
   it('should render', () => {
-    const { baseElement } = render(<Root/>);
+    const { baseElement } = render(<Simple/>);
     expect(baseElement).toBeDefined();
   });
 });

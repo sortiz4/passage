@@ -1,7 +1,7 @@
 import { Fragment, MutableRefObject, ReactElement, useRef, useState } from 'react';
-import { createPasswords, useAppState } from './app.state';
-import { Button, Field, Group, Input, Label, TextArea } from './bulma';
-import { createDownload } from '../utils';
+import { createPasswords, useAppState } from '../app/app.state';
+import { Button, Field, Group, Input, Label, TextArea } from '../../bulma';
+import { createDownload } from '../../utils';
 
 export function SectionC(): ReactElement {
   const [passwords, setPasswords] = useState('');

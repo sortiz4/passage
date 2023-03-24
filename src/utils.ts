@@ -1,5 +1,4 @@
 import { saveAs } from 'file-saver';
-export { default as classNames } from 'classnames';
 
 export function createDownload(name: string, data: string): void {
   saveAs(new Blob([new TextEncoder().encode(data).buffer], { type: 'application/octet-stream' }), name);

@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import { useAppState } from './app.state';
-import { Box, Progress, Title, Window } from './bulma';
-import { SectionA } from './section-a';
-import { SectionB } from './section-b';
-import { SectionC } from './section-c';
+import { useAppState } from '../app/app.state';
+import { SectionA } from '../section-a/section-a.component';
+import { SectionB } from '../section-b/section-b.component';
+import { SectionC } from '../section-c/section-c.component';
+import { Box, Progress, Title, Window } from '../../bulma';
 
 export function Core(): ReactElement {
   const state = useAppState()[0];

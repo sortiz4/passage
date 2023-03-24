@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { Advanced } from './advanced';
+import { SectionA } from './section-a.component';
 
-describe('Advanced', () => {
+describe('SectionA', () => {
   it('should render', () => {
-    const { baseElement } = render(<Advanced/>);
+    const { baseElement } = render(<SectionA/>);
     expect(baseElement).toBeDefined();
   });
 });

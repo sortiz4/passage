@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { App } from './app';
+import { Root } from './root.component';
 
-describe('App', () => {
+describe('Root', () => {
   it('should render', () => {
-    const { baseElement } = render(<App/>);
+    const { baseElement } = render(<Root/>);
     expect(baseElement).toBeDefined();
   });
 });

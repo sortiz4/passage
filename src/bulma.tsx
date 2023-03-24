@@ -1,25 +1,14 @@
+import classNames from 'classnames';
+import { Children, createElement, ForwardedRef, forwardRef, ReactElement } from 'react';
 import {
-  ButtonHTMLAttributes,
-  Children,
-  createElement,
-  DetailedHTMLProps,
-  ForwardedRef,
-  forwardRef,
-  HTMLAttributes,
-  InputHTMLAttributes,
-  LabelHTMLAttributes,
-  ReactElement,
-  TextareaHTMLAttributes,
-} from 'react';
-import { classNames } from '../utils';
-
-type HtmlButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-type HtmlDivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-type HtmlHeadingProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-type HtmlInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-type HtmlLabelProps = DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-type HtmlProgressProps = DetailedHTMLProps<HTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
-type HtmlTextAreaProps = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
+  ButtonProps as HtmlButtonProps,
+  DivProps as HtmlDivProps,
+  HeadingProps as HtmlHeadingProps,
+  InputProps as HtmlInputProps,
+  LabelProps as HtmlLabelProps,
+  ProgressProps as HtmlProgressProps,
+  TextAreaProps as HtmlTextAreaProps,
+} from 'react-html-props';
 
 interface ButtonProps extends HtmlButtonProps {
   color?: string;
@@ -37,6 +26,10 @@ interface TitleProps extends HtmlHeadingProps {
 
 interface WindowProps extends HtmlDivProps {
   color?: string;
+}
+
+function getColorClass(color?: string): string | null {
+  return typeof color === 'string' ? `is-${color}` : null;
 }
 
 export const Input = forwardRef(
@@ -64,7 +57,7 @@ export function Box(props: HtmlDivProps): ReactElement {
 export function Button({ color, ...props }: ButtonProps): ReactElement {
   return (
     <button
-      className={classNames('button', typeof color === 'string' ? `is-${color}` : null)}
+      className={classNames('button', getColorClass(color))}
       {...props}
     />
   );
@@ -105,7 +98,7 @@ export function Label(props: HtmlLabelProps): ReactElement {
 
 export function Progress({ value = 0, color, ...props }: ProgressProps): ReactElement {
   return (
-    <progress className={classNames('progress', typeof color === 'string' ? `is-${color}` : null)} value={value} max="1" {...props}>
+    <progress className={classNames('progress', getColorClass(color))} value={value} max="1" {...props}>
       {Math.round(value * 100)}%
     </progress>
   );
@@ -144,7 +137,7 @@ export function Title({ size = 3, centered = false, children, ...props }: TitleP
 export function Window({ color, ...props }: WindowProps): ReactElement {
   return (
     <div
-      className={classNames('window', typeof color === 'string' ? `is-${color}` : null)}
+      className={classNames('window', getColorClass(color))}
       {...props}
     />
   );
