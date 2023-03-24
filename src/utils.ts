@@ -28,6 +28,7 @@ export class UnicodeSet extends Set<string> {
         this.delete(character);
       }
     }
+
     return this;
   }
 

@@ -95,7 +95,7 @@ function createNextAppState(current: AppState): AppState {
   const score = getScore();
   const color = getColor();
 
-  const next = {
+  const next: Partial<AppState> = {
     selection,
     score,
     color,
@@ -117,6 +117,7 @@ export function createPasswords(state: AppState): string {
     }
     passwords.push(password.join(''));
   }
+
   return passwords.join('\n');
 }
 

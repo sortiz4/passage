@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Box, Button, Checkbox, Control, Field, Group, Input, Label, Radio, Row, TextArea, Title, Window } from './bulma';
+import { Box, Button, Checkbox, Control, Field, Group, Input, Label, Progress, Radio, Row, TextArea, Title, Window } from './bulma';
 
 describe('Box', () => {
   it('should render', () => {
@@ -53,6 +53,13 @@ describe('Input', () => {
 describe('Label', () => {
   it('should render', () => {
     const { baseElement } = render(<Label/>);
+    expect(baseElement).toBeDefined();
+  });
+});
+
+describe('Progress', () => {
+  it('should render', () => {
+    const { baseElement } = render(<Progress/>);
     expect(baseElement).toBeDefined();
   });
 });

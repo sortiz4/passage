@@ -18,10 +18,16 @@ type HtmlDivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivEle
 type HtmlHeadingProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
 type HtmlInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 type HtmlLabelProps = DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
+type HtmlProgressProps = DetailedHTMLProps<HTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
 type HtmlTextAreaProps = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
 
 interface ButtonProps extends HtmlButtonProps {
   color?: string;
+}
+
+interface ProgressProps extends HtmlProgressProps {
+  color?: string;
+  value?: number;
 }
 
 interface TitleProps extends HtmlHeadingProps {
@@ -94,6 +100,14 @@ export function Group(props: HtmlDivProps): ReactElement {
 export function Label(props: HtmlLabelProps): ReactElement {
   return (
     <label className="label" {...props}/>
+  );
+}
+
+export function Progress({ value = 0, color, ...props }: ProgressProps): ReactElement {
+  return (
+    <progress className={classNames('progress', typeof color === 'string' ? `is-${color}` : null)} value={value} max="1" {...props}>
+      {Math.round(value * 100)}%
+    </progress>
   );
 }
 

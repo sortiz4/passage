@@ -10,6 +10,7 @@ export function SectionC(): ReactElement {
 
   function onGenerate(): void {
     const passwords = createPasswords(state);
+
     if (state.shouldExport) {
       createDownload(`${document.title}.txt`.toLowerCase(), passwords);
       setPasswords('');
