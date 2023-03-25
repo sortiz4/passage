@@ -1,21 +1,45 @@
 {
   "root": true,
+  "plugins": [
+    "@nrwl/nx"
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    "www"
+  ],
   "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": [
+                  "*"
+                ]
+              }
+            ],
+            "allow": []
+          }
+        ]
+      }
+    },
     {
       "files": [
         "*.ts",
         "*.tsx"
       ],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
-        "createDefaultProgram": true
-      },
       "extends": [
-        "eslint:recommended",
-        "next/core-web-vitals",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@nrwl/nx/typescript"
       ],
       "rules": {
         "@typescript-eslint/ban-types": [
@@ -26,6 +50,7 @@
             }
           }
         ],
+        "@typescript-eslint/explicit-function-return-type": "error",
         "@typescript-eslint/member-ordering": [
           "error",
           {
@@ -51,7 +76,7 @@
             ]
           }
         ],
-        "arrow-body-style": 0,
+        "arrow-body-style": "off",
         "comma-dangle": [
           "error",
           "always-multiline"
@@ -62,12 +87,12 @@
             "allowEmptyCatch": true
           }
         ],
-        "no-underscore-dangle": 0,
+        "no-underscore-dangle": "off",
         "object-curly-spacing": [
           "error",
           "always"
         ],
-        "prefer-arrow/prefer-arrow-functions": 0,
+        "prefer-arrow/prefer-arrow-functions": "off",
         "semi": [
           "error",
           "always"
@@ -79,20 +104,11 @@
         "*.js",
         "*.jsx"
       ],
-      "parserOptions": {
-        "ecmaVersion": 2021
-      },
-      "env": {
-        "es6": true,
-        "jasmine": true,
-        "node": true
-      },
       "extends": [
-        "eslint:recommended",
-        "next/core-web-vitals"
+        "plugin:@nrwl/nx/javascript"
       ],
       "rules": {
-        "arrow-body-style": 0,
+        "arrow-body-style": "off",
         "comma-dangle": [
           "error",
           "always-multiline"
@@ -103,12 +119,12 @@
             "allowEmptyCatch": true
           }
         ],
-        "no-underscore-dangle": 0,
+        "no-underscore-dangle": "off",
         "object-curly-spacing": [
           "error",
           "always"
         ],
-        "prefer-arrow/prefer-arrow-functions": 0,
+        "prefer-arrow/prefer-arrow-functions": "off",
         "semi": [
           "error",
           "always"

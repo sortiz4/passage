@@ -1,10 +1,11 @@
 .DS_Store
+/.backup
 /.idea
-/.next
 /.vscode
-/build
+/apps/client/.next
+/apps/client/next-env.d.ts
+/apps/client/public/static/icons
 /coverage
-/next-env.d.ts
 /node_modules
 /package-lock.json
-/public/static/icons
+/www
