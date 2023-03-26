@@ -12,4 +12,5 @@ Those seeking to compile must have...
 
 Once these requirements have been met, simply clone the repository and execute
 `npm install && npm run build` (this will setup and compile the project). Once
-completed, the `build` directory can then be deployed to any web server.
+completed, the `www/apps/client/exported` directory can then be deployed to any
+web server.
