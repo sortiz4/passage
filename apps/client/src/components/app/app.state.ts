@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import { getRandom, UnicodeSet } from '../../utils';
+import { UnicodeSet } from '../../utils';
 
 export enum Mode {
   Simple,
@@ -26,7 +26,7 @@ type AppStateContext = [AppState, (_: Partial<AppState>) => void];
 // State values
 const optionCeiling = 94;
 const lengthCeiling = 16;
-const colors = ['danger', 'warning', 'success'];
+const colors = ['danger', 'warning', 'success'] as const;
 
 // Character sets
 const uppercase = `${new UnicodeSet(65, 91)}`;
@@ -36,11 +36,11 @@ const symbols = `${new UnicodeSet(33, 127).exclude(uppercase, lowercase, numbers
 const all = symbols + numbers + uppercase + lowercase;
 
 // Context components
-const Context = createContext<AppStateContext>(null as unknown as AppStateContext);
+const Context = createContext<AppStateContext>([createDefaultAppState(), (): void => undefined]);
 export const AppStateConsumer = Context.Consumer;
 export const AppStateProvider = Context.Provider;
 
-function createAppState(): AppState {
+function createDefaultAppState(): AppState {
   return {
     mode: Mode.Simple,
     amount: 1,
@@ -57,10 +57,6 @@ function createAppState(): AppState {
   };
 }
 
-function createInitialAppState(): AppState {
-  return createNextAppState(createAppState());
-}
-
 function createNextAppState(current: AppState): AppState {
   function getSelection(): string[] {
     const set = current.mode === Mode.Simple ? (
@@ -71,6 +67,7 @@ function createNextAppState(current: AppState): AppState {
     ) : (
       current.characters
     );
+
     return Array.from(new Set(set));
   }
 
@@ -88,6 +85,7 @@ function createNextAppState(current: AppState): AppState {
   function getColor(): string {
     const length = colors.length - 1;
     const offset = score * length;
+
     return colors[Math.min(Math.trunc(offset), length)];
   }
 
@@ -104,31 +102,18 @@ function createNextAppState(current: AppState): AppState {
   return Object.assign({}, current, next);
 }
 
-export function createPasswords(state: AppState): string {
-  // Get a unique set of selected characters
-  const characters = state.selection;
-
-  // Write the password(s) to a string
-  const passwords = [];
-  for (let i = 0; i < state.amount; i++) {
-    const password = [];
-    for (let j = 0; j < state.length; j++) {
-      password.push(characters[getRandom(0, characters.length - 1)]);
-    }
-    passwords.push(password.join(''));
-  }
-
-  return passwords.join('\n');
-}
-
-function setAppState(current: AppState, next: Partial<AppState>): AppState {
-  return createNextAppState(Object.assign({}, current, next));
-}
-
 export function useAppState(): AppStateContext {
   return useContext(Context);
 }
 
-export function useInitialAppState(): AppStateContext {
-  return useReducer(setAppState, null, createInitialAppState);
+export function useNewAppState(): AppStateContext {
+  function reducer(current: AppState, next: Partial<AppState>): AppState {
+    return createNextAppState(Object.assign({}, current, next));
+  }
+
+  function initializer(): AppState {
+    return createNextAppState(createDefaultAppState());
+  }
+
+  return useReducer(reducer, null, initializer);
 }

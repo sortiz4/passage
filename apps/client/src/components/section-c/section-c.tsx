@@ -1,22 +1,35 @@
 import { Fragment, MutableRefObject, ReactElement, useRef, useState } from 'react';
-import { createPasswords, useAppState } from '../app/app.state';
+import { useAppState } from '../app/app.state';
 import { Button, Field, Group, Input, Label, TextArea } from '../../bulma';
-import { createDownload } from '../../utils';
+import { createDownload, getRandom } from '../../utils';
 
 export function SectionC(): ReactElement {
   const [passwords, setPasswords] = useState('');
   const state = useAppState()[0];
   const input = useRef<HTMLInputElement | HTMLTextAreaElement>();
 
+  function getPasswords(): string {
+    const characters = state.selection;
+
+    function getCharacter(): string {
+      return characters[getRandom(0, characters.length - 1)];
+    }
+
+    function getPassword(): string {
+      return Array(state.length).fill(undefined).map(getCharacter).join('');
+    }
+
+    return Array(state.amount).fill(undefined).map(getPassword).join('\n');
+  }
+
   function onGenerate(): void {
-    const passwords = createPasswords(state);
+    const passwords = getPasswords();
 
     if (state.shouldExport) {
       createDownload(`${document.title}.txt`.toLowerCase(), passwords);
-      setPasswords('');
-    } else {
-      setPasswords(passwords);
     }
+
+    setPasswords(passwords);
   }
 
   function onCopy(): void {
