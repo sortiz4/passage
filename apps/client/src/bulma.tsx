@@ -1,30 +1,30 @@
 import classNames from 'classnames';
 import { Children, createElement, ForwardedRef, forwardRef, ReactElement } from 'react';
 import {
-  ButtonProps as HtmlButtonProps,
-  DivProps as HtmlDivProps,
-  HeadingProps as HtmlHeadingProps,
-  InputProps as HtmlInputProps,
-  LabelProps as HtmlLabelProps,
-  ProgressProps as HtmlProgressProps,
-  TextAreaProps as HtmlTextAreaProps,
+  ButtonProps as BaseButtonProps,
+  DivProps,
+  HeadingProps,
+  InputProps,
+  LabelProps,
+  ProgressProps as BaseProgressProps,
+  TextAreaProps,
 } from 'react-html-props';
 
-interface ButtonProps extends HtmlButtonProps {
+interface ButtonProps extends BaseButtonProps {
   color?: string;
 }
 
-interface ProgressProps extends HtmlProgressProps {
+interface ProgressProps extends BaseProgressProps {
   color?: string;
   value?: number;
 }
 
-interface TitleProps extends HtmlHeadingProps {
+interface TitleProps extends HeadingProps {
   centered?: boolean;
   size?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-interface WindowProps extends HtmlDivProps {
+interface WindowProps extends DivProps {
   color?: string;
 }
 
@@ -33,7 +33,7 @@ function getColorClass(color?: string): string | null {
 }
 
 export const Input = forwardRef(
-  function Input(props: HtmlInputProps, ref: ForwardedRef<HTMLInputElement>): ReactElement {
+  function Input(props: InputProps, ref: ForwardedRef<HTMLInputElement>): ReactElement {
     return (
       <input className="input" ref={ref} {...props}/>
     );
@@ -41,14 +41,14 @@ export const Input = forwardRef(
 );
 
 export const TextArea = forwardRef(
-  function TextArea(props: HtmlTextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>): ReactElement {
+  function TextArea(props: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>): ReactElement {
     return (
       <textarea className="textarea" ref={ref} {...props}/>
     );
   },
 );
 
-export function Box(props: HtmlDivProps): ReactElement {
+export function Box(props: DivProps): ReactElement {
   return (
     <div className="box m-4" {...props}/>
   );
@@ -63,7 +63,7 @@ export function Button({ color, ...props }: ButtonProps): ReactElement {
   );
 }
 
-export function Checkbox({ children, ...props }: HtmlInputProps): ReactElement {
+export function Checkbox({ children, ...props }: InputProps): ReactElement {
   return (
     <label className="checkbox">
       <input type="checkbox" {...props}/>
@@ -72,25 +72,25 @@ export function Checkbox({ children, ...props }: HtmlInputProps): ReactElement {
   );
 }
 
-export function Control(props: HtmlDivProps): ReactElement {
+export function Control(props: DivProps): ReactElement {
   return (
     <div className="control" {...props}/>
   );
 }
 
-export function Field(props: HtmlDivProps): ReactElement {
+export function Field(props: DivProps): ReactElement {
   return (
     <div className="field" {...props}/>
   );
 }
 
-export function Group(props: HtmlDivProps): ReactElement {
+export function Group(props: DivProps): ReactElement {
   return (
     <div className="is-grouped" {...props}/>
   );
 }
 
-export function Label(props: HtmlLabelProps): ReactElement {
+export function Label(props: LabelProps): ReactElement {
   return (
     <label className="label" {...props}/>
   );
@@ -104,7 +104,7 @@ export function Progress({ value = 0, color, ...props }: ProgressProps): ReactEl
   );
 }
 
-export function Radio({ children, ...props }: HtmlInputProps): ReactElement {
+export function Radio({ children, ...props }: InputProps): ReactElement {
   return (
     <label className="radio">
       <input type="radio" {...props}/>
@@ -113,7 +113,7 @@ export function Radio({ children, ...props }: HtmlInputProps): ReactElement {
   );
 }
 
-export function Row({ children, ...props }: HtmlDivProps): ReactElement {
+export function Row({ children, ...props }: DivProps): ReactElement {
   return (
     <div className="row" {...props}>
       {Children.map(children, child => <div>{child}</div>)}

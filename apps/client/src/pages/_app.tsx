@@ -4,6 +4,6 @@ import { ReactElement } from 'react';
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
-    <Component {...pageProps} />
+    <Component {...pageProps}/>
   );
 }

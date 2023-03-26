@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import { ReactElement } from 'react';
+import { Fragment, ReactElement } from 'react';
 import { Root } from '../components/root/root';
 
 export default function Page(): ReactElement {
   return (
-    <>
+    <Fragment>
       <Head>
         <title>
           Passage
@@ -15,6 +15,6 @@ export default function Page(): ReactElement {
         <link rel="icon" type="image/png" href="static/icons/favicon-512.png"/>
       </Head>
       <Root/>
-    </>
+    </Fragment>
   );
 }
