@@ -23,13 +23,13 @@ export function SectionC(): ReactElement {
   }
 
   function onGenerate(): void {
-    const passwords = getPasswords();
+    const list = getPasswords();
 
     if (state.shouldExport) {
-      createDownload(`${document.title}.txt`.toLowerCase(), passwords);
+      createDownload(`${document.title}.txt`.toLowerCase(), list);
     }
 
-    setPasswords(passwords);
+    setPasswords(list);
   }
 
   function onCopy(): void {

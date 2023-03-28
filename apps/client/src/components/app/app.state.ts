@@ -36,7 +36,7 @@ const symbols = `${new UnicodeSet(33, 127).exclude(uppercase, lowercase, numbers
 const all = symbols + numbers + uppercase + lowercase;
 
 // Context components
-const Context = createContext<AppStateContext>([createDefaultAppState(), (): void => undefined]);
+const Context = createContext<AppStateContext>([createDefaultAppState(), () => undefined]);
 export const AppStateConsumer = Context.Consumer;
 export const AppStateProvider = Context.Provider;
 
