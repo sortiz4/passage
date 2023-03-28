@@ -11,21 +11,21 @@ import {
 } from 'react-html-props';
 
 interface ButtonProps extends BaseButtonProps {
-  color?: string;
+  readonly color?: string;
 }
 
 interface ProgressProps extends BaseProgressProps {
-  color?: string;
-  value?: number;
+  readonly color?: string;
+  readonly value?: number;
 }
 
 interface TitleProps extends HeadingProps {
-  centered?: boolean;
-  size?: 1 | 2 | 3 | 4 | 5 | 6;
+  readonly centered?: boolean;
+  readonly size?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 interface WindowProps extends DivProps {
-  color?: string;
+  readonly color?: string;
 }
 
 function getColorClass(color?: string): string | null {

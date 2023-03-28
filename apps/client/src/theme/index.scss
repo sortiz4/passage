@@ -3,6 +3,7 @@ $body-overflow-x: auto;
 $body-overflow-y: auto;
 $box-shadow: none;
 $input-shadow: none;
+$speed: 250ms;
 
 // Import Bulma
 @import 'bulma/sass/helpers/_all.sass';
@@ -13,12 +14,12 @@ $input-shadow: none;
 
 // App variables
 $app-border-color: $grey-lighter;
-$app-border-radius-circle: 50%;
 $app-border-radius: $input-radius;
+$app-border-radius-circle: 50%;
 $app-border-style: solid;
 $app-border-width: 2px;
-$app-margin-small: 0.5rem;
-$app-transition: 250ms ease;
+$app-size-1: $size-7;
+$app-transition: $speed ease;
 $app-success: $success;
 $app-warning: $warning;
 $app-danger: $danger;
@@ -28,18 +29,21 @@ $app-button-font-weight: 600;
 $app-button-transition: $app-transition;
 $app-checkbox-border: $app-border-width $app-border-style $app-border-color;
 $app-checkbox-border-radius: $app-border-radius;
-$app-checkbox-margin: $app-margin-small;
+$app-checkbox-margin: $app-size-1;
 $app-checkbox-size: 20px;
 $app-checkbox-transition: $app-transition;
 $app-checkbox-checked-background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjEyIDEgNSA3LjUgMiA1IDEgNS41IDUgMTAgMTMgMS41Ii8+PC9zdmc+');
 $app-checkbox-checked-background-color: $link;
-$app-group-margin: $app-margin-small;
+$app-group-margin: $app-size-1;
 $app-input-border-width: $app-border-width;
 $app-input-transition: $app-transition;
 $app-radio-border-radius: $app-border-radius-circle;
 $app-radio-checked-background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGZpbGw9IiNmZmYiIGN4PSI4IiBjeT0iOCIgcj0iMiIvPjwvc3ZnPg==');
-$app-row-margin: $app-margin-small;
+$app-row-margin: $app-size-1;
 $app-textarea-border-width: $app-border-width;
+$app-window-background-success: $app-success;
+$app-window-background-warning: $app-warning;
+$app-window-background-danger: $app-danger;
 $app-window-transition: $app-transition;
 $app-window-width: 600px;
 
@@ -57,6 +61,7 @@ $app-window-width: 600px;
 
 .checkbox > input,
 .radio > input {
+  appearance: none;
   background: white no-repeat 50% 50%;
   border: $app-checkbox-border;
   box-sizing: border-box;
@@ -68,8 +73,6 @@ $app-window-width: 600px;
   width: $app-checkbox-size;
   height: $app-checkbox-size;
   margin-right: $app-checkbox-margin;
-  -moz-appearance: none;
-  -webkit-appearance: none;
 
   &:checked {
     background-color: $app-checkbox-checked-background-color;
@@ -79,9 +82,8 @@ $app-window-width: 600px;
   &:checked,
   &:active,
   &:focus {
+    appearance: none;
     outline: transparent none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
   }
 }
 
@@ -146,14 +148,14 @@ $app-window-width: 600px;
   }
 
   &.is-success {
-    background: $app-success;
+    background: $app-window-background-success;
   }
 
   &.is-warning {
-    background: $app-warning;
+    background: $app-window-background-warning;
   }
 
   &.is-danger {
-    background: $app-danger;
+    background: $app-window-background-danger;
   }
 }
