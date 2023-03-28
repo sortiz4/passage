@@ -1,8 +1,8 @@
 import { Fragment, ReactElement } from 'react';
 import { Advanced } from '../advanced/advanced';
 import { Mode, useAppState } from '../app/app.state';
+import { Control, Label, Radio, Row } from '../bulma/bulma';
 import { Simple } from '../simple/simple';
-import { Control, Label, Radio, Row } from '../../bulma';
 
 export function SectionA(): ReactElement {
   const [state, setState] = useAppState();
