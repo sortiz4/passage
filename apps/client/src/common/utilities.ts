@@ -1,7 +1,7 @@
 import { saveAs } from 'file-saver';
 
 export function createDownload(name: string, data: string): void {
-  saveAs(new Blob([new TextEncoder().encode(data).buffer], { type: 'application/octet-stream' }), name);
+  saveAs(new Blob([data], { type : 'plain/text' }), name);
 }
 
 export function getRandom(min: number, max: number): number {
@@ -16,6 +16,7 @@ export function getRandom(min: number, max: number): number {
 export class UnicodeSet extends Set<string> {
   constructor(a: number, b: number) {
     super();
+
     for (let i = a; i < b; i++) {
       this.add(String.fromCharCode(i));
     }

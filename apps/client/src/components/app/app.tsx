@@ -1,3 +1,4 @@
+'use client';
 import { ReactElement } from 'react';
 import { AppStateProvider, useNewAppState } from './app.state';
 import { Core } from '../core/core';

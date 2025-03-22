@@ -1,6 +1,6 @@
-import { ChangeEvent, Fragment, ReactElement } from 'react';
+import { ChangeEvent, ReactElement } from 'react';
 import { useAppState } from '../app/app.state';
-import { Checkbox, Label, Row } from '../bulma/bulma';
+import { Checkbox, Field, Label, Row } from '../bulma/bulma';
 
 export function Simple(): ReactElement {
   const [state, setState] = useAppState();
@@ -22,7 +22,7 @@ export function Simple(): ReactElement {
   }
 
   return (
-    <Fragment>
+    <Field>
       <Label>
         Options
       </Label>
@@ -42,6 +42,6 @@ export function Simple(): ReactElement {
           Symbols
         </Checkbox>
       </Row>
-    </Fragment>
+    </Field>
   );
 }

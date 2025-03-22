@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Children, createElement, ForwardedRef, forwardRef, ReactElement } from 'react';
+import { Children, createElement, ReactElement } from 'react';
 import {
   ButtonProps as BaseButtonProps,
   DivProps,
@@ -32,21 +32,17 @@ function getColorClass(color?: string): string | null {
   return typeof color === 'string' ? `is-${color}` : null;
 }
 
-export const Input = forwardRef(
-  function Input(props: InputProps, ref: ForwardedRef<HTMLInputElement>): ReactElement {
-    return (
-      <input className="input" ref={ref} {...props}/>
-    );
-  },
-);
+export function Input({ ref, ...props }: InputProps): ReactElement {
+  return (
+    <input className="input" ref={ref} {...props}/>
+  );
+}
 
-export const TextArea = forwardRef(
-  function TextArea(props: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>): ReactElement {
-    return (
-      <textarea className="textarea" ref={ref} {...props}/>
-    );
-  },
-);
+export function TextArea({ ref, ...props }: TextAreaProps): ReactElement {
+  return (
+    <textarea className="textarea" ref={ref} {...props}/>
+  );
+}
 
 export function Box(props: DivProps): ReactElement {
   return (
@@ -65,7 +61,7 @@ export function Button({ color, ...props }: ButtonProps): ReactElement {
 
 export function Checkbox({ children, ...props }: InputProps): ReactElement {
   return (
-    <label className="checkbox">
+    <label className="checkbox control">
       <input type="checkbox" {...props}/>
       {children}
     </label>

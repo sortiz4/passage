@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment, ReactElement } from 'react';
+import { ChangeEvent, ReactElement } from 'react';
 import { useAppState } from '../app/app.state';
 import { Checkbox, Field, Input, Label } from '../bulma/bulma';
 
@@ -18,7 +18,7 @@ export function SectionB(): ReactElement {
   }
 
   return (
-    <Fragment>
+    <>
       <Field>
         <Label>
           Password length
@@ -36,6 +36,6 @@ export function SectionB(): ReactElement {
           Save to file
         </Checkbox>
       </Field>
-    </Fragment>
+    </>
   );
 }

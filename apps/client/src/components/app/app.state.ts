@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import { UnicodeSet } from '../../utils';
+import { UnicodeSet } from '../../common/utilities';
 
 export enum Mode {
   Simple,

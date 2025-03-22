@@ -1,7 +1,7 @@
-import { Fragment, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Advanced } from '../advanced/advanced';
 import { Mode, useAppState } from '../app/app.state';
-import { Control, Label, Radio, Row } from '../bulma/bulma';
+import { Control, Field, Label, Radio, Row } from '../bulma/bulma';
 import { Simple } from '../simple/simple';
 
 export function SectionA(): ReactElement {
@@ -16,27 +16,29 @@ export function SectionA(): ReactElement {
   }
 
   return (
-    <Fragment>
-      <Control>
+    <>
+      <Field>
         <Label>
           Mode
         </Label>
-        <Row>
-          <Radio checked={state.mode === Mode.Simple} onChange={onToSimple}>
-            Simple
-          </Radio>
-          <Radio checked={state.mode === Mode.Advanced} onChange={onToAdvanced}>
-            Advanced
-          </Radio>
-        </Row>
-      </Control>
+        <Control>
+          <Row>
+            <Radio checked={state.mode === Mode.Simple} onChange={onToSimple}>
+              Simple
+            </Radio>
+            <Radio checked={state.mode === Mode.Advanced} onChange={onToAdvanced}>
+              Advanced
+            </Radio>
+          </Row>
+        </Control>
+      </Field>
       {state.mode === Mode.Simple ? (
         <Simple/>
       ) : state.mode === Mode.Advanced ? (
         <Advanced/>
       ) : (
-        <Fragment/>
+        null
       )}
-    </Fragment>
+    </>
   );
 }
