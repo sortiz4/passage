@@ -10,21 +10,21 @@ import {
   TextAreaProps,
 } from 'react-html-props';
 
-interface ButtonProps extends BaseButtonProps {
+export interface ButtonProps extends BaseButtonProps {
   readonly color?: string;
 }
 
-interface ProgressProps extends BaseProgressProps {
+export interface ProgressProps extends BaseProgressProps {
   readonly color?: string;
   readonly value?: number;
 }
 
-interface TitleProps extends HeadingProps {
+export interface TitleProps extends HeadingProps {
   readonly centered?: boolean;
   readonly size?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-interface WindowProps extends DivProps {
+export interface WindowProps extends DivProps {
   readonly color?: string;
 }
 
