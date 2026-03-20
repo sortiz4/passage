@@ -32,7 +32,7 @@ export class UnicodeSet extends Set<string> {
     return this;
   }
 
-  toString(): string {
+  override toString(): string {
     return Array.from(this).join('');
   }
 }
