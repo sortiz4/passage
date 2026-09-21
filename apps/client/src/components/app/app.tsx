@@ -1,9 +1,9 @@
 'use client';
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { AppStateProvider, useNewAppState } from './app.state';
-import { Core } from '../core/core';
+import { Core } from '../core';
 
-export function App(): ReactElement {
+export function App(): ReactNode {
   return (
     <AppStateProvider value={useNewAppState()}>
       <Core/>

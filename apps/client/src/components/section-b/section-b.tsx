@@ -1,21 +1,21 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 import { useAppState } from '../app/app.state';
-import { Checkbox, Field, Input, Label } from '../bulma/bulma';
+import { Checkbox, Field, Input, Label } from '../bulma';
 
-export function SectionB(): ReactElement {
+export function SectionB(): ReactNode {
   const [state, setState] = useAppState();
 
-  function onLengthChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onLengthChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ length: Number(event.target.value) });
-  }
+  };
 
-  function onAmountChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onAmountChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ amount: Number(event.target.value) });
-  }
+  };
 
-  function onExportChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onExportChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ shouldExport: event.target.checked });
-  }
+  };
 
   return (
     <>

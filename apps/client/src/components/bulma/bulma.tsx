@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Children, createElement, ReactElement } from 'react';
+import { Children, createElement, ReactNode } from 'react';
 import {
   ButtonProps as BaseButtonProps,
   DivProps,
@@ -32,25 +32,25 @@ function getColorClass(color?: string): string | null {
   return typeof color === 'string' ? `is-${color}` : null;
 }
 
-export function Input({ ref, ...props }: InputProps): ReactElement {
+export function Input({ ref, ...props }: InputProps): ReactNode {
   return (
     <input className="input" ref={ref} {...props}/>
   );
 }
 
-export function TextArea({ ref, ...props }: TextAreaProps): ReactElement {
+export function TextArea({ ref, ...props }: TextAreaProps): ReactNode {
   return (
     <textarea className="textarea" ref={ref} {...props}/>
   );
 }
 
-export function Box(props: DivProps): ReactElement {
+export function Box(props: DivProps): ReactNode {
   return (
     <div className="box m-4" {...props}/>
   );
 }
 
-export function Button({ color, ...props }: ButtonProps): ReactElement {
+export function Button({ color, ...props }: ButtonProps): ReactNode {
   return (
     <button
       className={classNames('button', getColorClass(color))}
@@ -59,7 +59,7 @@ export function Button({ color, ...props }: ButtonProps): ReactElement {
   );
 }
 
-export function Checkbox({ children, ...props }: InputProps): ReactElement {
+export function Checkbox({ children, ...props }: InputProps): ReactNode {
   return (
     <label className="checkbox control">
       <input type="checkbox" {...props}/>
@@ -68,31 +68,31 @@ export function Checkbox({ children, ...props }: InputProps): ReactElement {
   );
 }
 
-export function Control(props: DivProps): ReactElement {
+export function Control(props: DivProps): ReactNode {
   return (
     <div className="control" {...props}/>
   );
 }
 
-export function Field(props: DivProps): ReactElement {
+export function Field(props: DivProps): ReactNode {
   return (
     <div className="field" {...props}/>
   );
 }
 
-export function Group(props: DivProps): ReactElement {
+export function Group(props: DivProps): ReactNode {
   return (
     <div className="is-grouped" {...props}/>
   );
 }
 
-export function Label(props: LabelProps): ReactElement {
+export function Label(props: LabelProps): ReactNode {
   return (
     <label className="label" {...props}/>
   );
 }
 
-export function Progress({ value = 0, color, ...props }: ProgressProps): ReactElement {
+export function Progress({ value = 0, color, ...props }: ProgressProps): ReactNode {
   return (
     <progress className={classNames('progress', getColorClass(color))} value={value} max="1" {...props}>
       {Math.round(value * 100)}%
@@ -100,7 +100,7 @@ export function Progress({ value = 0, color, ...props }: ProgressProps): ReactEl
   );
 }
 
-export function Radio({ children, ...props }: InputProps): ReactElement {
+export function Radio({ children, ...props }: InputProps): ReactNode {
   return (
     <label className="radio">
       <input type="radio" {...props}/>
@@ -109,15 +109,17 @@ export function Radio({ children, ...props }: InputProps): ReactElement {
   );
 }
 
-export function Row({ children, ...props }: DivProps): ReactElement {
+export function Row({ children, ...props }: DivProps): ReactNode {
   return (
     <div className="row" {...props}>
-      {Children.map(children, child => <div>{child}</div>)}
+      {Children.map(children, (child: ReactNode): ReactNode => (
+        <div>{child}</div>
+      ))}
     </div>
   );
 }
 
-export function Title({ size = 3, centered = false, children, ...props }: TitleProps): ReactElement {
+export function Title({ size = 3, centered = false, children, ...props }: TitleProps): ReactNode {
   return createElement(
     `h${size}`,
     {
@@ -128,7 +130,7 @@ export function Title({ size = 3, centered = false, children, ...props }: TitleP
   );
 }
 
-export function Window({ color, ...props }: WindowProps): ReactElement {
+export function Window({ color, ...props }: WindowProps): ReactNode {
   return (
     <div
       className={classNames('window', getColorClass(color))}

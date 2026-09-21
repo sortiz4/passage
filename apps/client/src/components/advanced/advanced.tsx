@@ -1,13 +1,13 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 import { useAppState } from '../app/app.state';
-import { Field, Input, Label } from '../bulma/bulma';
+import { Field, Input, Label } from '../bulma';
 
-export function Advanced(): ReactElement {
+export function Advanced(): ReactNode {
   const [state, setState] = useAppState();
 
-  function onCharactersChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onCharactersChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ characters: event.target.value });
-  }
+  };
 
   return (
     <Field>

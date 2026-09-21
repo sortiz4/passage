@@ -1,19 +1,19 @@
-import { ReactElement } from 'react';
-import { Advanced } from '../advanced/advanced';
+import { ReactNode } from 'react';
+import { Advanced } from '../advanced';
 import { Mode, useAppState } from '../app/app.state';
-import { Control, Field, Label, Radio, Row } from '../bulma/bulma';
-import { Simple } from '../simple/simple';
+import { Control, Field, Label, Radio, Row } from '../bulma';
+import { Simple } from '../simple';
 
-export function SectionA(): ReactElement {
+export function SectionA(): ReactNode {
   const [state, setState] = useAppState();
 
-  function onToSimple(): void {
+  const onToSimple = (): void => {
     setState({ mode: Mode.Simple });
-  }
+  };
 
-  function onToAdvanced(): void {
+  const onToAdvanced = (): void => {
     setState({ mode: Mode.Advanced });
-  }
+  };
 
   return (
     <>

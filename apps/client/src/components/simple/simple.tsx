@@ -1,25 +1,25 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 import { useAppState } from '../app/app.state';
-import { Checkbox, Field, Label, Row } from '../bulma/bulma';
+import { Checkbox, Field, Label, Row } from '../bulma';
 
-export function Simple(): ReactElement {
+export function Simple(): ReactNode {
   const [state, setState] = useAppState();
 
-  function onUppercaseChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onUppercaseChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ hasUppercase: event.target.checked });
-  }
+  };
 
-  function onLowercaseChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onLowercaseChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ hasLowercase: event.target.checked });
-  }
+  };
 
-  function onNumbersChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onNumbersChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ hasNumbers: event.target.checked });
-  }
+  };
 
-  function onSymbolsChange(event: ChangeEvent<HTMLInputElement>): void {
+  const onSymbolsChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({ hasSymbols: event.target.checked });
-  }
+  };
 
   return (
     <Field>

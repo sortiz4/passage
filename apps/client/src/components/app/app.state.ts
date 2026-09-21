@@ -58,7 +58,7 @@ function createDefaultAppState(): AppState {
 }
 
 function createNextAppState(current: AppState): AppState {
-  function getSelection(): string[] {
+  const getSelection = (): string[] => {
     const set = current.mode === Mode.Simple ? (
       (current.hasUppercase ? uppercase : '') +
       (current.hasLowercase ? lowercase : '') +
@@ -69,9 +69,9 @@ function createNextAppState(current: AppState): AppState {
     );
 
     return Array.from(new Set(set));
-  }
+  };
 
-  function getScore(): number {
+  const getScore = (): number => {
     // Score the password options
     const optionScore = selection.length / optionCeiling;
 
@@ -80,14 +80,14 @@ function createNextAppState(current: AppState): AppState {
 
     // Compute the score
     return optionScore * lengthScore;
-  }
+  };
 
-  function getColor(): string {
+  const getColor = (): string => {
     const length = colors.length - 1;
     const offset = score * length;
 
     return colors[Math.min(Math.trunc(offset), length)];
-  }
+  };
 
   const selection = getSelection();
   const score = getScore();
@@ -107,13 +107,13 @@ export function useAppState(): AppStateContext {
 }
 
 export function useNewAppState(): AppStateContext {
-  function reducer(current: AppState, next: Partial<AppState>): AppState {
+  const reducer = (current: AppState, next: Partial<AppState>): AppState => {
     return createNextAppState(Object.assign({}, current, next));
-  }
+  };
 
-  function initializer(): AppState {
+  const initializer = (): AppState => {
     return createNextAppState(createDefaultAppState());
-  }
+  };
 
   return useReducer(reducer, null, initializer);
 }

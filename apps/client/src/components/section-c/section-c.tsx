@@ -1,28 +1,28 @@
-import { ReactElement, RefObject, useRef, useState } from 'react';
+import { ReactNode, RefObject, useRef, useState } from 'react';
 import { useAppState } from '../app/app.state';
-import { Button, Field, Group, Input, Label, TextArea } from '../bulma/bulma';
+import { Button, Field, Group, Input, Label, TextArea } from '../bulma';
 import { createDownload, getRandom } from '../../common/utilities';
 
-export function SectionC(): ReactElement {
+export function SectionC(): ReactNode {
   const [passwords, setPasswords] = useState('');
   const state = useAppState()[0];
   const input = useRef<HTMLInputElement | HTMLTextAreaElement>(undefined);
 
-  function getPasswords(): string {
+  const getPasswords = (): string => {
     const characters = state.selection;
 
-    function getCharacter(): string {
+    const getCharacter = (): string => {
       return characters[getRandom(0, characters.length - 1)];
-    }
+    };
 
-    function getPassword(): string {
+    const getPassword = (): string => {
       return Array(state.length).fill(undefined).map(getCharacter).join('');
-    }
+    };
 
     return Array(state.amount).fill(undefined).map(getPassword).join('\n');
-  }
+  };
 
-  function onGenerate(): void {
+  const onGenerate = (): void => {
     const list = getPasswords();
 
     if (state.shouldExport) {
@@ -30,16 +30,16 @@ export function SectionC(): ReactElement {
     }
 
     setPasswords(list);
-  }
+  };
 
-  function onCopy(): void {
+  const onCopy = (): void => {
     input.current?.select?.();
     document.execCommand('copy');
-  }
+  };
 
-  function onDelete(): void {
+  const onDelete = (): void => {
     setPasswords('');
-  }
+  };
 
   return (
     <>
